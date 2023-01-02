@@ -8,8 +8,6 @@ npm i gh-pages
 
 ## 3. package.json in "scripts": 2 dinge hinzufügen
 "pre-deploy": "npm run build",
-
- "deploy" : "gh-pages -d dist", (mit vite)
  "deploy" : "gh-pages -d build" (mit create-react-app),
 
 
@@ -23,15 +21,15 @@ Repo > Settings > pages:
 Branch: gh-pages, SAVE!
 
 ____________
-VITE
+# VITE
 
 ## 1. edit package.json: Add homepage 
 "hompage" : "https://${Github USERNAME}.github.io/${FILENAME}",
-_> das ist dann später der link
+-> das ist dann später der link
 
 ## 2. in viteconfig.js: base: '</REPO/>'
 export default defineConfig({
-  base: "/quiz/",
+  base: "/REPONAME/",
   plugins: [react()],
 });
 
@@ -46,3 +44,5 @@ npm i gh-pages --save-dev
     "build": "vite build",
     "preview": "vite preview"
   },
+
+## 4. npm run deploy 

@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react';
 
-const gameContexts = React.createContext();
+const GameContext = React.createContext();
 export function useGameContext(){
-    return useContext(gameContexts);
+    return useContext(GameContext);
 }
 
 export function GameContextProvider({children}) {
     const [gameData, setGameData] = useState({});
     return (
-        <GameContextProvider value={{}}>
+        <GameContext.Provider value={{}}>
             {children}
-        </GameContextProvider>
+        </GameContext.Provider>
     )
 }

@@ -3,9 +3,6 @@ import { GameContext, GameContextProvider } from "../../global/Context";
 import axios from "axios";
 
 function ChooseQuiz() {
-  // const [chosenTopic, setChosenTopic] = useState('1')
-  // const [chosenLevel, setChosenLevel] = useState('2')
-  // const [chosenAmount, setChosenAmount] = useState(0)
   // const {gameData, setGameData} = useContext(GameContext)
   const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");

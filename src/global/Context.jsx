@@ -5,7 +5,8 @@ console.log(GameContext)
 
 export function GameContextProvider({children}) {
 
-    const [gameData, setGameData] = useState({questions: [], chosenLevel: "", score: 0});
+    const [gameData, setGameData] = useState({questions: [],  score: 0});
+    console.log("🚀 ~ file: Context.jsx:9 ~ GameContextProvider ~ gameData", gameData)
 
     return (
         <GameContext.Provider value={{gameData, setGameData}}>

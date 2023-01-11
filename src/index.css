@@ -64,6 +64,7 @@ button, select {
   cursor: pointer;
   transition: border-color 0.25s;
   overflow: scroll;
+  text-align:center;
   /* font-family: cursive; */
 
 }
@@ -228,9 +229,9 @@ footer{
   margin:0 auto;
   margin-top: 1rem;
   font-size:1rem;
-  padding: 20px;
+  padding: 5px;
   width:90%;
-  height:100px;
+  height:80px;
  
 }
 /* _________chose quiz */

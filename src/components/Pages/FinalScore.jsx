@@ -1,9 +1,11 @@
-import React from 'react'
-import { GameContextProvider } from '../../global/Context'
+import React, { useContext } from 'react'
+import { GameContext } from '../../global/Context'
+
 
 function FinalScore() {
+  const {gameData} = useContext(GameContext)
   return (
-    <div>FinalScore</div>
+    <div className="card">{console.log(gameData.score)}</div>
   )
 }
 

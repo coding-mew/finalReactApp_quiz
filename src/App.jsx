@@ -10,29 +10,31 @@ import Quiz from "./components/Pages/Quiz";
 import FinalScore from "./components/Pages/FinalScore";
 import NotFound from "./components/Pages/NotFound";
 import axios from "axios";
+import { GameContextProvider } from "./global/Context";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [topic, setTopic] = useState("JavaScript");
-  const [quizData, setQuizData] = useState([]);
-  // set APIkey private (see .env file for details)
-  const apiKey = import.meta.env.VITE_API_KEY;
-  // console.log(apiKey);
-  // get topic and level by user input select
-  const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=20&tags=${topic}`;
-console.log(url);
-  const fetchingData = () => {
-    axios.get(url).then((res) => {
-      setQuizData(res.data);
-    });
-  };
-  useEffect(() => {
-    fetchingData();
-  }, []);
+  // const [topic, setTopic] = useState("JavaScript");
+  // const [quizData, setQuizData] = useState([]);
+//   // set APIkey private (see .env file for details)
+//   const apiKey = import.meta.env.VITE_API_KEY;
+//   // console.log(apiKey);
+//   // get topic and level by user input select
+//   const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=20&tags=${topic}`;
+// console.log(url);
+//   const fetchingData = () => {
+//     axios.get(url).then((res) => {
+//       setQuizData(res.data);
+//     });
+//   };
+//   useEffect(() => {
+//     fetchingData();
+//   }, []);
   
-  console.log(quizData);
+ 
   return (
     <>
+    <GameContextProvider>
       <BrowserRouter>
         <Layout>
           <Routes>
@@ -44,6 +46,7 @@ console.log(url);
           </Routes>
         </Layout>
       </BrowserRouter>
+      </GameContextProvider>
       <div className="App"></div>
     </>
   );

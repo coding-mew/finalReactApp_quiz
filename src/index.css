@@ -24,6 +24,10 @@ a {
   -webkit-animation: blink 12s infinite;
   text-decoration: inherit;
 }
+select{
+  margin: 3rem;
+  font-size: 1.5rem;
+}
 
 
 body {
@@ -48,7 +52,7 @@ h1 {
   padding:0;
 }
 
-button {
+button, select {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -56,15 +60,16 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  color:rgb(110, 157, 127);
+  color:rgb(131, 187, 152);
   cursor: pointer;
   transition: border-color 0.25s;
   overflow: scroll;
   /* font-family: cursive; */
 
 }
-button:hover {
-  border-color: #646cff;
+button:hover,
+select:hover{
+  /* border-color: #646cff; */
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
     color: #fff6a9;
   text-align: center;
@@ -83,9 +88,9 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
+  /* a:hover {
     color: #747bff;
-  }
+  } */
   button {
     background-color: #f9f9f9;
   }
@@ -102,7 +107,7 @@ button:focus-visible {
 
 .card {
   background: rgba(25, 28, 41, 0.65);
-  margin-top:6rem;
+  margin-top:8rem;
   margin-bottom: 4rem;
   width: var(--card-width);
   min-height: var(--card-height);
@@ -181,12 +186,8 @@ button:focus-visible {
 h1, a.active{
   font-size: 2rem;
   line-height: calc(20px + 20vh);
-/*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
-    0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
-  color: #fccaff; */
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
     color: #fff6a9;
-  /* font-family: "Sacramento", cursive; */
   text-align: center;
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
@@ -233,7 +234,6 @@ footer{
  
 }
 /* _________chose quiz */
-.choose_quiz_container{
-  /* width:30vw;
-  height: 30vw; */
+.notFoundContent >a{
+  padding: 2rem;
 }

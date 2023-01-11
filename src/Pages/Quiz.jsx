@@ -31,7 +31,33 @@ function Quiz() {
     <div className="card" style={{ height: "75vh", marginTop: "15rem" }}>
       <div className="takeQuiz_container">
         <div className="question">{gameData[currentQuestion].question}</div>
-        <ul>
+
+
+        <form>
+          {Object.keys(gameData[currentQuestion].answers).map((key) => {
+            if (gameData[currentQuestion].answers[key] !== null){
+              return (
+                <>
+                  <div className="answers_container">
+                   <div className="answer_single">
+                      <input type="radio" className="list_quiz" name="answer" value={gameData[currentQuestion].answers[key]} />
+                      <label htmlFor={gameData[currentQuestion].answers[key]}>
+                        <br />
+
+                      
+                        {gameData[currentQuestion].answers[key]}</label>
+                    
+                </div>
+                  </div>
+                </>
+              );
+            }
+          })}
+        <input type="submit" value="Next" onClick={() => handleAnswer()} /> 
+        </form>
+
+
+        {/* <ul>
           {Object.keys(gameData[currentQuestion].answers).map((key) => {
             if (gameData[currentQuestion].answers[key] !== null){
               return (
@@ -48,7 +74,7 @@ function Quiz() {
             }
           })}
         </ul>
-        <input onClick={() => handleAnswer()}> Next</input>
+        <input onClick={() => handleAnswer()}> Next</input> */}
       </div>
     </div>
 

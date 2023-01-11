@@ -3,6 +3,15 @@
 ## Topics..?
 
 ### Flashing Card Game/ Quiz?
+- level depending on:
+  - question easy/hard?
+  - 3 or 5 lifes
+- what happens when lifes are 0?
+  - restart? conflict with randomizing deck
+  - time-based regaining?
+-  how to regain lifes?
+   -  watch a video (and pay me money)
+   -  over time?
 
 
 ## Design-System: 
@@ -57,6 +66,6 @@
 > useParams
     for dynamic links only?
 > useLocation 
-
+> useCallback
 
 

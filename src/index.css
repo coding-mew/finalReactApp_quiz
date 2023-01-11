@@ -3,46 +3,49 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
+  margin: 0;
+  padding:0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --card-height: 70vh;
+  --card-width: calc(var(--card-height));
+  
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
-}
+
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 60vh;
 
-    background-color: #170d24;
-    background-image:
-      radial-gradient(ellipse at 10% 90%, #3c2d83 0%, transparent 55%),
-      radial-gradient(ellipse at 90% 90%, #c33c65 0%, transparent 55%),
-      radial-gradient(ellipse at 90% 10%, #4a74dc 0%, transparent 55%),
-      radial-gradient(ellipse at 10% 10%, #35244f 0%, transparent 55%);
+  background-image: url('./assets/pictures/nightsky.avif');
+  background-color: #212534; 
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
   
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin:0;
+  padding:0;
 }
 
 button {
@@ -53,15 +56,26 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color:rgb(110, 157, 127);
   cursor: pointer;
   transition: border-color 0.25s;
+  overflow: scroll;
+  /* font-family: cursive; */
+
 }
 button:hover {
   border-color: #646cff;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
 }
 
 @media (prefers-color-scheme: light) {
@@ -75,4 +89,146 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+/* __________________________ MAGIC CARD_____________*/
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+
+
+
+.card {
+  background: rgba(25, 28, 41, 0.65);
+  margin-top:6rem;
+  margin-bottom: 4rem;
+  width: var(--card-width);
+  min-height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250);
+  cursor: pointer;
+  /* font-family: cursive; */
+}
+
+.card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+  
+}
+.card:hover:before, .card:hover:after {
+  /* animation: none; */
+  opacity: 0.55;
+}
+
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  overflow: scroll;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff75, #3c66e354 43%, #4e00c269);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    /* animation: spin 2.5s linear infinite; */
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  /* animation: spin 2.5s linear infinite; */
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+
+/* ____________________________NAVBAR_________________ */
+
+h1, a.active{
+  font-size: 2rem;
+  line-height: calc(20px + 20vh);
+/*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
+    0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
+  color: #fccaff; */
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  /* font-family: "Sacramento", cursive; */
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
+}
+.nav_container li {
+  display:inline;
+  list-style-type: none;
+  margin-right:4rem;
+
+}
+.nav_container{
+  position:fixed;
+  top: 0;
+  left:0;
+  width:100vw;
+}
+/* _______FOOTER_________ */
+footer{
+  position:fixed;
+  bottom:0;
+}
+
+/* ________C O M P O N E N T S _____________ */
+
+
+/* __QUIZ___ */
+
+.takeQuiz_container{
+  display:block;
+  width:100%;
+  height:90%;
+}
+/* .question{
+
+} */
+.answer_button{
+  display:block;
+  margin:0 auto;
+  margin-top: 1rem;
+  font-size:1rem;
+  padding: 20px;
+  width:90%;
+  height:100px;
+ 
 }

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { GameContext, GameContextProvider } from "../global/Context";
 import axios from "axios";
+import React, { useState } from "react";
+import { useGameContext } from "../global/Context";
 
 function ChooseQuiz() {
   // const {gameData, setGameData} = useContext(GameContext)
@@ -8,7 +8,8 @@ function ChooseQuiz() {
   const [topic, setTopic] = useState("JavaScript");
   const [level, setLevel] = useState("Easy");
   const [amountQuestions, setAmountQuestions] = useState(5);
-  const {gameData, setGameData} = useContext(GameContext)
+  const {gameData, setGameData} = useGameContext()
+
   console.log("🚀 ~ file: ChooseQuiz.jsx:12 ~ ChooseQuiz ~ gameData", gameData)
   //onsubmithandler -> fetch -> fragen -> use context mit setGameData
   // console.log(gameData);
@@ -33,7 +34,8 @@ function ChooseQuiz() {
   // console.log(apiKey);
   // get topic and level by user input select
 
-  const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&difficulty=${level}&limit=${amountQuestions}&tags=${topic}`;
+  const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}${level}&limit=${amountQuestions}&tags=${topic}`;
+  
   console.log(url);
 
   return (
@@ -50,9 +52,11 @@ function ChooseQuiz() {
           <br />
           <label htmlFor="level">Choose your Level</label>
           <select id="level" onChange={(e) => setLevel(e.target.value)}>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Intermediate</option>
-            <option value="Hard">Advanced</option>
+          <option value="">Any</option>
+
+            <option value="&difficulty=Easy">Easy</option>
+            <option value="&difficulty=Medium">Medium</option>
+            <option value="&difficulty=Hard">Hard</option>
           </select>
           <br />
           <label htmlFor="questionsAmount">How many questions?</label>

@@ -13,8 +13,9 @@ function App() {
 
   return (
     <>
-      <GameContextProvider>
+      
         <BrowserRouter>
+        <GameContextProvider>
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -24,8 +25,9 @@ function App() {
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>
-        </BrowserRouter>
-      </GameContextProvider>
+         </GameContextProvider>
+         </BrowserRouter>
+     
       <div className="App"></div>
     </>
   );

@@ -38,6 +38,8 @@ const routes = [
   { path: "*", element: <NotFound />, id: 4 },
   // leitet von / nach /home
   { path: "/", element: <Navigate to="home" />, id: 5 },
+  { path: "/finalReactApp_quiz/", element: <Navigate to="home" />, id: 5 },
+
   {
     path: "/final_score",
     element: <FinalScore />,

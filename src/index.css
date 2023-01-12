@@ -245,15 +245,17 @@ input[type=radio]{
 
 .list_quiz{
   list-style-type: none;
-  width:10vw;
+  width:1.5rem;
 }
 .answer_single{
   width:80vw;
+  display:flex;
 }
 .label_quiz, input[type=submit]{
   border-radius: 8px;
   border: 1px solid transparent;
-  width: 10vw;
+  width: 40vw;
+  height: 3vh;
   /* padding: 0.6em 1.2em; */
   font-size: 1em;
   font-weight: 500;
@@ -276,4 +278,103 @@ animation: blink 12s infinite;
 .answers_container{
   margin-top:3rem;
   width:60vw,
+}
+.next_button{
+  margin-top:2rem;
+}
+
+
+/* HOME */
+.home_animation{
+  position: relative;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size:3rem;
+  font-weight: 700;
+  /* color: #fff; */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
+  /* text-shadow: 0 0 0.15em #1da9cc; */
+  user-select: none;
+  white-space: nowrap;
+  filter: blur(0.007em);
+  animation: shake 2.5s linear forwards;
+}
+
+.home_animation span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  -webkit-clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+          clip-path: polygon(10% 0%, 44% 0%, 70% 100%, 55% 100%);
+}
+
+.home_animation::before,
+.home_animation::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home_animation::before {
+  animation: crack1 2.5s linear forwards;
+  -webkit-clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 10% 0%, 55% 100%, 0% 100%);
+}
+
+.home_animation::after {
+  animation: crack2 2.5s linear forwards;
+  -webkit-clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+          clip-path: polygon(44% 0%, 100% 0%, 100% 100%, 70% 100%);
+}
+
+@keyframes shake {
+  5%, 15%, 25%, 35%, 55%, 65%, 75%, 95% {
+      filter: blur(0.018em);
+      transform: translateY(0.018em) rotate(0deg);
+  }
+
+  10%, 30%, 40%, 50%, 70%, 80%, 90% {
+      filter: blur(0.01em);
+      transform: translateY(-0.018em) rotate(0deg);
+  }
+
+  20%, 60% {
+      filter: blur(0.03em);
+      transform: translate(-0.018em, 0.018em) rotate(0deg);
+  }
+
+  45%, 85% {
+      filter: blur(0.03em);
+      transform: translate(0.018em, -0.018em) rotate(0deg);
+  }
+
+  100% {
+      filter: blur(0.007em);
+      transform: translate(0) rotate(-0.5deg);
+  }
+}
+
+@keyframes crack1 {
+  0%, 95% {
+      transform: translate(-50%, -50%);
+     
+  }
+
+  100% {
+      transform: translate(-51%, -48%);
+  }
+}
+
+@keyframes crack2 {
+  0%, 95% {
+      transform: translate(-50%, -50%);
+  }
+
+  100% {
+      transform: translate(-49%, -53%);
+  }
 }

@@ -1,37 +1,33 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../global/Context";
 
 function ChooseQuiz() {
   const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");
-  const [level, setLevel] = useState("Easy");
   const [amountQuestions, setAmountQuestions] = useState(5);
   const {gameData, setGameData} = useGameContext()
 
+  const navigateToQuiz = useNavigate()
 
   const fetchingData = async () => {
-    await axios.get(url).then((res) => {
-      setQuizData(res.data);
-      setGameData(quizData);
+    await axios.get(url).then(async (res) => {
+     await setGameData( res.data);
+    //  await setGameData(quizData);
     });
   };
   
   const onSubmitHandler = (e) => {
     e.preventDefault();
     fetchingData();
-    
+    navigateToQuiz("/quiz");
   };
 console.log(gameData)
-  // set APIkey private (see .env file for details)
 
   const apiKey = import.meta.env.VITE_API_KEY;
-
-
   const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=${amountQuestions}&tags=${topic}`;
-  
   console.log(url);
-
   return (
     <div className="card">
       <div className="choose_quiz_container">
@@ -57,6 +53,7 @@ console.log(gameData)
           </select>
           <br />
           <button className="generateQuiz" type="submit">
+          
             Generate your Quiz
           </button>
         </form>

@@ -40,6 +40,7 @@ function SingleAnswer() {
     const handleSelectChange = (answer) => {
       setSelectedAnswer(answer);
     };
+    {/* random id : crypto.. */}
   return (
           //  currentQuestion.multiple_correct_answers === false ?
           <div className="card" style={{ height: "75vh", marginTop: "15rem" }}>
@@ -49,8 +50,7 @@ function SingleAnswer() {
                 {Object.keys(currentQuestion.answers).map((key) => {
                   if (currentQuestion.answers[key] !== null) {
                     return (
-                      <>
-                        {/* random id : crypto.. */}
+                      
                         <div
                           key={crypto.randomUUID()}
                           className="answer_single"
@@ -73,7 +73,7 @@ function SingleAnswer() {
 
                           <br key={crypto.randomUUID()}/>
                         </div>
-                      </>
+                      
                     );
                   }
                 })}

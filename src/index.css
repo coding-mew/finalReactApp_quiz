@@ -222,6 +222,9 @@ footer{
   width:100%;
   height:90%;
 }
+.answers_container{
+  margin-left: 5rem;
+}
 
 input[type=radio]{
   background-color:red;
@@ -266,7 +269,11 @@ input[type=radio]{
   transition: border-color 0.25s;
   overflow: scroll;
   text-align:center;
-  margin-top: 2rem;
+  margin: 2rem 0 0 2rem;
+  padding: 5px;
+}
+input[type=radio]{
+  /* display:none; */
 }
 input[type=submit]{
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
@@ -274,6 +281,7 @@ input[type=submit]{
 text-align: center;
 animation: blink 12s infinite;
 -webkit-animation: blink 12s infinite;
+
 }
 .answers_container{
   margin-top:3rem;

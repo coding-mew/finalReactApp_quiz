@@ -15,7 +15,6 @@ import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
 import ChooseQuiz from "../components/Pages/ChooseQuiz";
-import TakeQuiz from "../components/TakeQuiz";
 import FinalScore from "../components/Pages/FinalScore";
 
 const routes = [
@@ -38,6 +37,7 @@ const routes = [
   { path: "*", element: <NotFound />, id: 4 },
   // leitet von / nach /home
   { path: "/", element: <Navigate to="home" />, id: 5 },
+  //  ???
   { path: "/finalReactApp_quiz/", element: <Navigate to="home" />, id: 6 },
   { path: "/quiz/", element: <Navigate to="home" />, id: 7 },
 

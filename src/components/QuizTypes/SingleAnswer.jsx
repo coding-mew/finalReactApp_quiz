@@ -4,19 +4,19 @@ import { useGameContext } from "../../global/Context"
 
 function SingleAnswer() {
     const { gameData, result, setResult } = useGameContext();
-    // const { gameData } = GameContextProvider()
-    console.log("🚀 ~ file: Quiz.jsx:6 ~ Quiz ~ gameData", gameData);
-  
+
     // useState to keep track of current question
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState("");
-    const [answerIsCorrect, setAnswerIsCorrect] = useState("");
-  
-    console.log(result)
     const currentQuestion = gameData[currentQuestionIndex];
+    const correctAnswers =Object.values(currentQuestion.correct_answers)
+    const indexOfCorrectAnswer = correctAnswers.findIndex(answer => answer=== "true" )
+
     
     const handleAnswer = (answer) => {
-      if (answer === currentQuestion.correct_answer) {
+        let keys = Object.keys(currentQuestion.answers)
+        let indexOfSelectedAnswer = keys.indexOf(answer)
+        if (indexOfCorrectAnswer === indexOfSelectedAnswer){
         setResult((prev) => {
           return {
             ...prev,
@@ -25,17 +25,18 @@ function SingleAnswer() {
           };
         });
         setCurrentQuestionIndex((prev) => prev + 1);
-      } else {
-        setResult((prev) => {
-            return {
-              ...prev,
-              score: prev.score + 5,
-              wrongAnswers: prev.wrongAnswers + 1,
-            };
-          });
-        setCurrentQuestionIndex((prev) => prev + 1);
-      }
-    };
+        }else {
+            setResult((prev) => {
+                return {
+                  ...prev,
+                  score: prev.score,
+                  wrongAnswers: prev.wrongAnswers + 1,
+                };
+              });
+            setCurrentQuestionIndex((prev) => prev + 1);
+          }
+        }
+
     const handleSelectChange = (answer) => {
       setSelectedAnswer(answer);
     };
@@ -70,7 +71,7 @@ function SingleAnswer() {
                             onChange={() => handleSelectChange(key)}
                           />
 
-                          <br />
+                          <br key={crypto.randomUUID()}/>
                         </div>
                       </>
                     );

@@ -3,21 +3,16 @@ import React, { useState } from "react";
 import { useGameContext } from "../global/Context";
 
 function ChooseQuiz() {
-  // const {gameData, setGameData} = useContext(GameContext)
   const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");
   const [level, setLevel] = useState("Easy");
   const [amountQuestions, setAmountQuestions] = useState(5);
   const {gameData, setGameData} = useGameContext()
 
-  console.log("🚀 ~ file: ChooseQuiz.jsx:12 ~ ChooseQuiz ~ gameData", gameData)
-  //onsubmithandler -> fetch -> fragen -> use context mit setGameData
-  // console.log(gameData);
-  const fetchingData = () => {
-    axios.get(url).then((res) => {
+
+  const fetchingData = async () => {
+    await axios.get(url).then((res) => {
       setQuizData(res.data);
-      console.log("🚀 ~ file: ChooseQuiz.jsx:17 ~ axios.get ~ res", res)
-  
       setGameData(quizData);
     });
   };
@@ -27,14 +22,13 @@ function ChooseQuiz() {
     fetchingData();
     
   };
-
+console.log(gameData)
   // set APIkey private (see .env file for details)
 
   const apiKey = import.meta.env.VITE_API_KEY;
-  // console.log(apiKey);
-  // get topic and level by user input select
 
-  const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}${level}&limit=${amountQuestions}&tags=${topic}`;
+
+  const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=${amountQuestions}&tags=${topic}`;
   
   console.log(url);
 
@@ -50,14 +44,6 @@ function ChooseQuiz() {
             <option value="Bash">Bash</option>
           </select>
           <br />
-          <label htmlFor="level">Choose your Level</label>
-          <select id="level" onChange={(e) => setLevel(e.target.value)}>
-          <option value="">Any</option>
-
-            <option value="&difficulty=Easy">Easy</option>
-            <option value="&difficulty=Medium">Medium</option>
-            <option value="&difficulty=Hard">Hard</option>
-          </select>
           <br />
           <label htmlFor="questionsAmount">How many questions?</label>
           <select

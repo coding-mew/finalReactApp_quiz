@@ -1,9 +1,16 @@
 import React from "react";
+import Top from "../components/FinalScores/Top";
 import { useGameContext } from "../global/Context";
 
 function FinalScore() {
-  const { gameData } = useGameContext()
-  return <div className="card">{console.log(gameData.score)}</div>;
+  const { result} = useGameContext()
+  return <div className="card">
+    <Top />
+    {console.log(result)}
+    {console.log(result.score)}
+
+    
+    </div>;
 }
 
 export default FinalScore;

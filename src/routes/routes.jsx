@@ -25,7 +25,7 @@ const routes = [
     id: 1,
   },
   {
-    path: "/quiz",
+    path: "/take_quiz",
     element: <Quiz />,
     id: 2,
   },
@@ -38,12 +38,14 @@ const routes = [
   { path: "*", element: <NotFound />, id: 4 },
   // leitet von / nach /home
   { path: "/", element: <Navigate to="home" />, id: 5 },
-  { path: "/finalReactApp_quiz/", element: <Navigate to="home" />, id: 5 },
+  { path: "/finalReactApp_quiz/", element: <Navigate to="home" />, id: 6 },
+  { path: "/quiz/", element: <Navigate to="home" />, id: 7 },
+
 
   {
     path: "/final_score",
     element: <FinalScore />,
-    id: 6,
+    id: 8,
   }
 ];
 

@@ -49,7 +49,6 @@ function Quiz() {
     // setSelectedAnswer(true); ???????? how to find given input?
     setSelectedAnswer(answer);
   };
-  // {condtitional if multiple = false? selectedAnswer.u. : checkbox }
 
   return (
     <>

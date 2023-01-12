@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useGameContext } from "../global/Context";
+import SingleAnswer from "../components/QuizTypes/SingleAnswer";
 
 function Quiz() {
   const { gameData, result, setResult } = useGameContext();
@@ -53,94 +54,7 @@ function Quiz() {
   return (
     <>
       {gameData.length > 0 && (
-        //  currentQuestion.multiple_correct_answers === false ?
-        <div className="card" style={{ height: "75vh", marginTop: "15rem" }}>
-          <div className="takeQuiz_container">
-            <div className="question">{currentQuestion.question}</div>
-            <div className="answers_container">
-              <div>
-                {Object.keys(currentQuestion.answers).map((key) => {
-                  if (currentQuestion.answers[key] !== null) {
-                    return (
-                      <>
-                        {/* random id : crypto.. */}
-                        <div
-                          key={crypto.randomUUID()}
-                          className="answer_single"
-                        >
-                          <label
-                            className="label_quiz"
-                            htmlFor={currentQuestion.answers[key]}
-                          >
-                            {currentQuestion.answers[key]}{" "}
-                          </label>
-                          <input
-                            type="radio"
-                            className="list_quiz"
-                            name="answer"
-                            value={currentQuestion.answers[key]}
-                            onChange={() => handleSelectChange(key)}
-                          />
-
-                          <br />
-                        </div>
-                      </>
-                    );
-                  }
-                })}
-                <button
-                  className="next_button"
-                  onClick={() => handleAnswer(selectedAnswer)}
-                >
-                  testnext
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        // ) : (
-        // <>
-        //   <div className="card" style={{ height: "75vh", marginTop: "15rem" }}>
-        //     <div className="takeQuiz_container">
-        //       <div className="question">{currentQuestion.question}</div>
-
-        //       <form>
-        //         {Object.keys(currentQuestion.answers).map((key) => {
-        //           if (currentQuestion.answers[key] !== null) {
-        //             return (
-        //               <>
-        //                 <div className="answers_container">
-        //                   <div className="answer_single">
-        //                     <input
-        //                       type="checkbox"
-        //                       className="list_quiz"
-        //                       name="answer"
-        //                       value={currentQuestion.answers[key]}
-        //                     />
-        //                     <label
-        //                       className="label_quiz"
-        //                       htmlFor={currentQuestion.answers[key]}
-        //                     >
-        //                       <br />
-
-        //                       {currentQuestion.answers[key]}
-        //                     </label>
-        //                   </div>
-        //                 </div>
-        //               </>
-        //             );
-        //           }
-        //         })}
-        //         <input
-        //           type="submit"
-        //           value="Next"
-        //           onClick={() => handleAnswer(answer)}
-        //         />
-        //       </form>
-        //     </div>
-        //   </div>
-        // </>
+        <SingleAnswer />
       )}
     </>
   );

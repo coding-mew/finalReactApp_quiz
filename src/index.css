@@ -273,3 +273,7 @@ text-align: center;
 animation: blink 12s infinite;
 -webkit-animation: blink 12s infinite;
 }
+.answers_container{
+  margin-top:3rem;
+  width:60vw,
+}

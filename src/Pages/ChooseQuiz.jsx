@@ -32,7 +32,7 @@ console.log(gameData)
     <div className="card">
       <div className="choose_quiz_container">
         <form onSubmit={onSubmitHandler}>
-          <label htmlFor="topic">Choose your Topic</label>
+          <label htmlFor="topic">Choose your Topic:</label>
           <select id="topic" onChange={(e) => setTopic(e.target.value)}>
             <option value="JavaScript">JavaScript</option>
             <option value="HTML">HTML</option>

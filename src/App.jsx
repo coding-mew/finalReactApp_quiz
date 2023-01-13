@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ChooseQuiz from "./Pages/ChooseQuiz";
@@ -8,6 +7,8 @@ import Quiz from "./Pages/Quiz";
 import FinalScore from "./Pages/FinalScore";
 import NotFound from "./Pages/NotFound";
 import { GameContextProvider } from "./global/Context";
+
+
 
 function App() {
 
@@ -28,7 +29,10 @@ function App() {
          </GameContextProvider>
          </BrowserRouter>
      
-      <div className="App"></div>
+      <div className="App">
+      </div>
+         
+       
     </>
   );
 }

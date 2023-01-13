@@ -1,16 +1,3 @@
-// export default items = [
-//     {
-//       name: "Home",
-//       to: "/",
-//       id: 0,
-//     },
-//     {
-//         name: "Choose a Quiz",
-//         to: "/choose_quiz",
-//         id: 1,
-//       }
-//   ];
-
 import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";

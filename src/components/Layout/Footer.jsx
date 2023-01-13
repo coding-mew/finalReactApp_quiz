@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { GiSoundOn, GiSoundOff } from "react-icons/gi"
+import useSound from 'use-sound'
+
 
 function Footer() {
+  const soundUrl = '../../src/assets/sounds/Radio_Waves_Earth_Magnetosphere.mp3'
+  const [play, { stop }] = useSound(
+    soundUrl,
+    { volume: 0.1 }
+  );
+
+  const [isSoundOn, setIsSoundOn] = useState(false);
+
+  function handleSoundClick() {
+    if (isSoundOn) {
+      stop();
+      setIsSoundOn(false);
+    } else {
+      play();
+      setIsSoundOn(true);
+    }
+  }
+
   return (
     <footer>
-   <p>&copy; Copyright 2023</p> 
+      <p className="footer_sound_icons">
+        {isSoundOn ? (
+          <GiSoundOff onClick={handleSoundClick}/>
+        ) : (
+          <GiSoundOn onClick={handleSoundClick}/>
+        )}
+      </p>
     </footer>
   )
 }

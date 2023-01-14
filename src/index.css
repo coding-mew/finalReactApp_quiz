@@ -52,7 +52,7 @@ h1 {
 button,
 select {
   border-radius: 8px;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -272,7 +272,7 @@ input[type="radio"] {
 input[type="submit"] {
   border-radius: 8px;
   border: 1px solid transparent;
-  width: 80%;
+  width: 99%;
   height: fit-content;
   font-size: 1em;
   font-weight: 500;
@@ -301,6 +301,9 @@ input[type="submit"] {
 .next_button {
   margin: 2rem;
 }
+/* .save_button:visited{
+  border: none;
+} */
 
 /* ________________HOME________________ */
 .home_container {
@@ -440,6 +443,7 @@ input[type="submit"] {
   text-align: center;
   animation: blink 12s infinite;
   -webkit-animation: blink 12s infinite;
+  margin-top:4rem;
 }
 .background-blur{
   filter:blur(500px);

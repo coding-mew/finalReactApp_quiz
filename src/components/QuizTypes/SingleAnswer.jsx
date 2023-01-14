@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
 import { useModal } from "../../../unused/useModal";
+import { NavbarContext } from "../../global/NavbarContext";
 
 function SingleAnswer() {
   const { gameData, result, setResult } = useGameContext();
+  const {showNavbar, setShowNavbar} = useContext(NavbarContext)
+
+  const [showModal, setShowModal] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
-  const [selectedAnswerText, setSelectedAnswerText] = useState("")
-  const [showModal, setShowModal] = useState(false);
-  const [answeredCorrect, setAnsweredCorrect] = useState(false)
+  const [selectedAnswerText, setSelectedAnswerText] = useState("");
+  const [answeredCorrect, setAnsweredCorrect] = useState(false);
+  const [savedQuestions,setSavedQuestions] = useState([]);
+
   const currentQuestion = gameData[currentQuestionIndex];
   const correctAnswers = Object.values(currentQuestion.correct_answers);
   const indexOfCorrectAnswer = correctAnswers.findIndex(
@@ -35,6 +40,7 @@ function SingleAnswer() {
       });
       setSelectedAnswer("");
       setAnsweredCorrect(true)
+      setShowNavbar(false)
       setShowModal((prev) => !prev);
     } else {
       setResult((prev) => {
@@ -46,6 +52,7 @@ function SingleAnswer() {
       });
       setSelectedAnswer("");
       setAnsweredCorrect(false)
+      setShowNavbar(false)
       setShowModal((prev) => !prev);
     }
   };
@@ -54,12 +61,16 @@ function SingleAnswer() {
     setSelectedAnswer(answer);
   };
   const handleModalButton = () =>{
-
     setShowModal(false)
+    setShowNavbar(true)
     setCurrentQuestionIndex((prev) => {
       console.log("🚀 ~ file: SingleAnswer.jsx:61 ~ handleAnswer ~ setCurrentQuestionIndex", setCurrentQuestionIndex)
       return prev + 1
     })
+  }
+  const saveQuestion=()=>{
+    setSavedQuestions((prev) => [...prev, { question: currentQuestion, answers: currentQuestion.answers, selectedAnswer }]);
+    console.log(savedQuestions)
   }
   {
     /* random id : crypto.randomUUID() */
@@ -70,9 +81,7 @@ function SingleAnswer() {
       style={{ height: "75vh", marginTop: "15rem", width: "60vw" }}
     >
       <div 
-      // className="takeQuiz_container"
       className={`background ${showModal ? 'background-blur' : 'takeQuiz_container'}`}
-
       >
         <div className="question">{currentQuestion.question}</div>
         <div className="answers_container">
@@ -105,6 +114,8 @@ function SingleAnswer() {
               }
             })}
           </form>
+          <div className="buttons_singleAnswer_container">
+          <button classname="save_button" onClick={saveQuestion}>Save Question</button>
           <button
             className="next_button"
             onClick={() => {
@@ -115,6 +126,7 @@ function SingleAnswer() {
           >
             Next Question
           </button>
+          </div>
         </div>
       </div>
       {showModal && (

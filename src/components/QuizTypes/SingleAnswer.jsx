@@ -4,8 +4,6 @@ import { useGameContext } from "../../global/Context";
 
 function SingleAnswer() {
   const { gameData, result, setResult } = useGameContext();
-
-  // useState to keep track of current question
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const currentQuestion = gameData[currentQuestionIndex];
@@ -14,12 +12,10 @@ function SingleAnswer() {
     (answer) => answer === "true"
   );
 
-  // redirect when array of questions is empty:
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentQuestionIndex === gameData.length-1) {
+    if (currentQuestionIndex === gameData.length - 1) {
       navigate("/final_score");
     }
   }, [currentQuestionIndex, gameData.length, navigate]);
@@ -54,7 +50,7 @@ function SingleAnswer() {
     setSelectedAnswer(answer);
   };
   {
-    /* random id : crypto.. */
+    /* random id : crypto.randomUUID() */
   }
   return (
     //  currentQuestion.multiple_correct_answers === false ?
@@ -79,7 +75,6 @@ function SingleAnswer() {
                       id={randomID}
                       onChange={() => handleSelectChange(key)}
                       checked={selectedAnswer === key ? true : false}
-                      // onChange={(e) => e.target.checked = !e.target.checked}
                     />
                     <label
                       className="label_quiz"

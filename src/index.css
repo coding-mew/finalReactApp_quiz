@@ -63,12 +63,10 @@ select {
   transition: border-color 0.25s;
   overflow: scroll;
   text-align: center;
-  /* font-family: cursive; */
 }
 button:hover,
 select:hover,
 label:hover {
-  /* border-color: #646cff; */
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
     0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
   color: #fff6a9;
@@ -89,9 +87,6 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  /* a:hover {
-    color: #747bff;
-  } */
   button {
     background-color: #f9f9f9;
   }
@@ -148,7 +143,7 @@ button:focus-visible {
   z-index: -1;
   top: -1%;
   left: -2%;
-  /* animation: spin 2.5s linear infinite; */
+  animation: spin 2.9s linear infinite;
 }
 
 .card::after {
@@ -171,7 +166,7 @@ button:focus-visible {
   );
   opacity: 1;
   transition: opacity 0.5s;
-  /* animation: spin 2.5s linear infinite; */
+  animation: spin 2.9s linear infinite;
 }
 @media only screen and (max-width: 600px) {
 }

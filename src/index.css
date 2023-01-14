@@ -143,7 +143,7 @@ button:focus-visible {
   z-index: -1;
   top: -1%;
   left: -2%;
-  animation: spin 2.9s linear infinite;
+  /* animation: spin 2.9s linear infinite; */
 }
 
 .card::after {
@@ -166,7 +166,7 @@ button:focus-visible {
   );
   opacity: 1;
   transition: opacity 0.5s;
-  animation: spin 2.9s linear infinite;
+  /* animation: spin 2.9s linear infinite; */
 }
 @media only screen and (max-width: 600px) {
 }
@@ -254,7 +254,7 @@ input[type="radio"] {
   width: 90%;
   height: 80px;
 }
-/* _________chose quiz */
+/* _________CHOSE QUIZ _________________ */
 .notFoundContent > a {
   padding: 2rem;
 }
@@ -274,7 +274,6 @@ input[type="submit"] {
   border: 1px solid transparent;
   width: 80%;
   height: fit-content;
-  /* padding: 0.6em 1.2em; */
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -287,9 +286,6 @@ input[type="submit"] {
   margin: 2rem 0 0 2rem;
   padding: 5px;
 }
-/* input[type=radio]{
-  display:none;
-} */
 input[type="submit"] {
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
     0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
@@ -306,7 +302,7 @@ input[type="submit"] {
   margin: 2rem;
 }
 
-/* HOME */
+/* ________________HOME________________ */
 .home_container {
   width: 70%;
 }
@@ -315,13 +311,11 @@ input[type="submit"] {
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  /* color: #fff; */
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
     0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
   color: #fff6a9;
-  /* text-shadow: 0 0 0.15em #1da9cc; */
   user-select: none;
   white-space: nowrap;
   filter: blur(0.007em);
@@ -425,4 +419,40 @@ input[type="submit"] {
   .home_animation {
     width: 20vw;
   }
+}
+/* _____________MODAL _________________ */
+.modal_overlay{
+  position:fixed;
+  width: 60vw;
+  height: 60vw;
+  background-image: url("./assets/pictures/nightsky.avif");
+  background-color: #212534;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.modal_question{
+  font-size: 2rem;
+  line-height: calc(60px);
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
+    0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
+}
+.background-blur{
+  filter:blur(500px);
+}
+.correct_answer{
+  text-shadow: 0 0 5px #00ff3c, 0 0 15px #2ba43e, 0 0 20px #00ff2a,
+    0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #0fbc1e, 0 0 98px #ff0000;
+  color: #fff6a9;
+}
+.wrong_answer{
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,
+    0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #e96f6f;
+    font-size: 1.5rem;
+
 }

@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
+import { useModal } from "../../../unused/useModal";
 
 function SingleAnswer() {
   const { gameData, result, setResult } = useGameContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [selectedAnswerText, setSelectedAnswerText] = useState("")
+  console.log("🚀 ~ file: SingleAnswer.jsx:11 ~ SingleAnswer ~ selectedAnswerText", selectedAnswerText)
+  const [showModal, setShowModal] = useState(false);
+  const [answeredCorrect, setAnsweredCorrect] = useState(false)
   const currentQuestion = gameData[currentQuestionIndex];
   const correctAnswers = Object.values(currentQuestion.correct_answers);
   const indexOfCorrectAnswer = correctAnswers.findIndex(
     (answer) => answer === "true"
   );
-
   const navigate = useNavigate();
+
+  // const { isOpen, openModal, closeModal } = useModal();
 
   useEffect(() => {
     if (currentQuestionIndex === gameData.length - 1) {
@@ -32,7 +38,10 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
+      setAnsweredCorrect(true)
       setCurrentQuestionIndex((prev) => prev + 1);
+      setShowModal((prev) => !prev);
+      console.log(correctAnswers)
     } else {
       setResult((prev) => {
         return {
@@ -42,10 +51,13 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
+      setAnsweredCorrect(false)
 
       setCurrentQuestionIndex((prev) => prev + 1);
+      setShowModal((prev) => !prev);
     }
   };
+
   const handleSelectChange = (answer) => {
     setSelectedAnswer(answer);
   };
@@ -53,12 +65,15 @@ function SingleAnswer() {
     /* random id : crypto.randomUUID() */
   }
   return (
-    //  currentQuestion.multiple_correct_answers === false ?
     <div
       className="card"
       style={{ height: "75vh", marginTop: "15rem", width: "60vw" }}
     >
-      <div className="takeQuiz_container">
+      <div 
+      // className="takeQuiz_container"
+      className={`background ${showModal ? 'background-blur' : 'takeQuiz_container'}`}
+
+      >
         <div className="question">{currentQuestion.question}</div>
         <div className="answers_container">
           <form>
@@ -75,12 +90,13 @@ function SingleAnswer() {
                       id={randomID}
                       onChange={() => handleSelectChange(key)}
                       checked={selectedAnswer === key ? true : false}
-                    />
+
+                      />
                     <label
                       className="label_quiz"
                       htmlFor={randomID}
                       key={crypto.randomUUID()}
-                    >
+                      >
                       {currentQuestion.answers[key]}{" "}
                     </label>
                     <br />
@@ -91,13 +107,46 @@ function SingleAnswer() {
           </form>
           <button
             className="next_button"
-            onClick={() => handleAnswer(selectedAnswer)}
+            onClick={() => {
+              handleAnswer(selectedAnswer);
+              setSelectedAnswerText(currentQuestion.answers[selectedAnswer]);
+            }}
             disabled={selectedAnswer === ""}
           >
             Next Question
           </button>
         </div>
       </div>
+      {showModal && (
+        <div className="modal_overlay">
+          <div className="modal_content">
+
+<h2 className="modal_question"> {currentQuestion.question}</h2>
+          {answeredCorrect?
+            <> 
+            <p className="correct_answer">Your answer is correct!</p>
+            </>
+          :<>
+          <p className="wrong_answer">Wrong..</p>
+          <br />
+          <p>The correct answer is:  </p>
+          </>
+        }
+              <br />
+              <p className="correct_answer">{selectedAnswerText}</p>
+               
+            {/* <p>
+              Your selected answer: {currentQuestion.answers[selectedAnswer]}
+            </p> */}
+            {/* {currentQuestion.answers[key]} */}
+          
+              {selectedAnswer}
+          
+            <br />
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

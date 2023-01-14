@@ -8,7 +8,6 @@ function SingleAnswer() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerText, setSelectedAnswerText] = useState("")
-  console.log("🚀 ~ file: SingleAnswer.jsx:11 ~ SingleAnswer ~ selectedAnswerText", selectedAnswerText)
   const [showModal, setShowModal] = useState(false);
   const [answeredCorrect, setAnsweredCorrect] = useState(false)
   const currentQuestion = gameData[currentQuestionIndex];
@@ -17,9 +16,6 @@ function SingleAnswer() {
     (answer) => answer === "true"
   );
   const navigate = useNavigate();
-
-  // const { isOpen, openModal, closeModal } = useModal();
-
   useEffect(() => {
     if (currentQuestionIndex === gameData.length - 1) {
       navigate("/final_score");
@@ -39,9 +35,7 @@ function SingleAnswer() {
       });
       setSelectedAnswer("");
       setAnsweredCorrect(true)
-      setCurrentQuestionIndex((prev) => prev + 1);
       setShowModal((prev) => !prev);
-      console.log(correctAnswers)
     } else {
       setResult((prev) => {
         return {
@@ -52,8 +46,6 @@ function SingleAnswer() {
       });
       setSelectedAnswer("");
       setAnsweredCorrect(false)
-
-      setCurrentQuestionIndex((prev) => prev + 1);
       setShowModal((prev) => !prev);
     }
   };
@@ -61,6 +53,14 @@ function SingleAnswer() {
   const handleSelectChange = (answer) => {
     setSelectedAnswer(answer);
   };
+  const handleModalButton = () =>{
+
+    setShowModal(false)
+    setCurrentQuestionIndex((prev) => {
+      console.log("🚀 ~ file: SingleAnswer.jsx:61 ~ handleAnswer ~ setCurrentQuestionIndex", setCurrentQuestionIndex)
+      return prev + 1
+    })
+  }
   {
     /* random id : crypto.randomUUID() */
   }
@@ -134,16 +134,10 @@ function SingleAnswer() {
         }
               <br />
               <p className="correct_answer">{selectedAnswerText}</p>
-               
-            {/* <p>
-              Your selected answer: {currentQuestion.answers[selectedAnswer]}
-            </p> */}
-            {/* {currentQuestion.answers[key]} */}
-          
               {selectedAnswer}
           
             <br />
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <button onClick={handleModalButton}>Close</button>
           </div>
         </div>
       )}

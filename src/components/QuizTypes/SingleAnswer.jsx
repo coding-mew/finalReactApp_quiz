@@ -19,7 +19,7 @@ function SingleAnswer() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentQuestionIndex === gameData.length - 1) {
+    if (currentQuestionIndex === gameData.length-1) {
       navigate("/final_score");
     }
   }, [currentQuestionIndex, gameData.length, navigate]);

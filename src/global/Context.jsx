@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import {NavbarContext} from './NavbarContext'
 
 // nur dynamic variables in context
 // initialisert context object
@@ -15,10 +16,13 @@ export function GameContextProvider({ children }) {
     correctAnswers: 0,
     wrongAnswers: 0,
   });
+  const [showNavbar, setShowNavbar] = useState(true)
 
   return (
+    <NavbarContext.Provider value={{showNavbar, setShowNavbar}}>
     <GameContext.Provider value={{ gameData, setGameData, result, setResult }}>
       {children}
     </GameContext.Provider>
+    </NavbarContext.Provider>
   );
 }

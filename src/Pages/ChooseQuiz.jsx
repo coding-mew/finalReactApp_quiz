@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../global/Context";
+import {NavbarContext} from '../global/NavbarContext'
+
 
 function ChooseQuiz() {
   const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");
   const [amountQuestions, setAmountQuestions] = useState(5);
   const {gameData, setGameData} = useGameContext()
-
+  const {showNavbar, setShowNavbar} = useContext(NavbarContext)
   const navigateToQuiz = useNavigate()
 
   const fetchingData = async () => {
@@ -17,6 +19,9 @@ function ChooseQuiz() {
     //  await setGameData(quizData);
     });
   };
+  useEffect(()=>{
+    setShowNavbar(true)
+  })
   
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -53,7 +58,6 @@ console.log(gameData)
           </select>
           <br />
           <button className="generateQuiz" type="submit">
-          
             Generate your Quiz
           </button>
         </form>

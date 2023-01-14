@@ -4,7 +4,7 @@ import useSound from 'use-sound'
 
 
 function Footer() {
-  const soundUrl = '../../src/assets/sounds/Radio_Waves_Earth_Magnetosphere.mp3'
+  const soundUrl = '../../src/assets/sounds/monk-chant-fantasy-23137.mp3'
   const [play, { stop }] = useSound(
     soundUrl,
     { volume: 0.1 }

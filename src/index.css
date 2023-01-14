@@ -222,8 +222,8 @@ footer {
   bottom: 0;
   right: 0;
   margin-right: 45%;
-  border-radius:10px;
-  padding:2px;
+  border-radius: 10px;
+  padding: 2px;
 }
 @media screen and (max-width: 415px) {
   .footer_sound_icons {
@@ -243,7 +243,7 @@ footer {
   height: 90%;
 }
 .answers_container {
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 
 input[type="radio"] {
@@ -270,15 +270,15 @@ input[type="radio"] {
   width: 1.5rem;
 }
 .answer_single {
-  width: 80vw;
+  width: 80%;
   display: flex;
 }
 .label_quiz,
 input[type="submit"] {
   border-radius: 8px;
   border: 1px solid transparent;
-  width: 45%;
-  height: 3vh;
+  width: 80%;
+  height: fit-content;
   /* padding: 0.6em 1.2em; */
   font-size: 1em;
   font-weight: 500;
@@ -308,11 +308,11 @@ input[type="submit"] {
   width: 60vw;
 }
 .next_button {
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 /* HOME */
-.home_container{
+.home_container {
   width: 70%;
 }
 .home_animation {
@@ -331,7 +331,6 @@ input[type="submit"] {
   white-space: nowrap;
   filter: blur(0.007em);
   animation: shake 2.5s linear forwards;
-  
 }
 
 .home_animation span {
@@ -427,8 +426,8 @@ input[type="submit"] {
   }
 }
 
-@media screen and (max-width: 415px){
-  .home_animation{
-    width:20vw;
+@media screen and (max-width: 415px) {
+  .home_animation {
+    width: 20vw;
   }
 }

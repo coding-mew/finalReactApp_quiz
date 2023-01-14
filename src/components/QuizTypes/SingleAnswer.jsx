@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
 
 function SingleAnswer() {
@@ -12,6 +13,16 @@ function SingleAnswer() {
   const indexOfCorrectAnswer = correctAnswers.findIndex(
     (answer) => answer === "true"
   );
+
+  // redirect when array of questions is empty:
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentQuestionIndex === gameData.length - 1) {
+      navigate("/final_score");
+    }
+  }, [currentQuestionIndex, gameData.length, navigate]);
 
   const handleAnswer = (answer) => {
     let keys = Object.keys(currentQuestion.answers);
@@ -35,7 +46,7 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
-      
+
       setCurrentQuestionIndex((prev) => prev + 1);
     }
   };
@@ -47,12 +58,15 @@ function SingleAnswer() {
   }
   return (
     //  currentQuestion.multiple_correct_answers === false ?
-    <div className="card" style={{ height: "75vh", marginTop: "15rem" }}>
+    <div
+      className="card"
+      style={{ height: "75vh", marginTop: "15rem", width: "60vw" }}
+    >
       <div className="takeQuiz_container">
         <div className="question">{currentQuestion.question}</div>
         <div className="answers_container">
           <form>
-            {Object.keys(currentQuestion.answers).map((key,index) => {
+            {Object.keys(currentQuestion.answers).map((key, index) => {
               if (currentQuestion.answers[key] !== null) {
                 const randomID = crypto.randomUUID();
                 return (
@@ -64,7 +78,7 @@ function SingleAnswer() {
                       value={currentQuestion.answers[key]}
                       id={randomID}
                       onChange={() => handleSelectChange(key)}
-                      checked={selectedAnswer === key? true : false}
+                      checked={selectedAnswer === key ? true : false}
                       // onChange={(e) => e.target.checked = !e.target.checked}
                     />
                     <label
@@ -83,6 +97,7 @@ function SingleAnswer() {
           <button
             className="next_button"
             onClick={() => handleAnswer(selectedAnswer)}
+            disabled={selectedAnswer === ""}
           >
             Next Question
           </button>

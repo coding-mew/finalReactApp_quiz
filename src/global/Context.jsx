@@ -23,7 +23,7 @@ export function GameContextProvider({ children }) {
 
 
   return (
-    <GameContext.Provider value={{ gameData, setGameData, result, setResult,showNavbar, setShowNavbar, savedQuestions, setSavedQuestions }}>
+    <GameContext.Provider value={{ gameData, setGameData, result, setResult,showNavbar, setShowNavbar, savedQuestions, setSavedQuestions, isSoundOn, setIsSoundOn }}>
       {children}
     </GameContext.Provider>
   );

@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <GameContextProvider>
           <Layout>
             <Routes>
@@ -30,7 +30,7 @@ function App() {
             </Routes>
           </Layout>
         </GameContextProvider>
-      </BrowserRouter>
+      </HashRouter>
       <div className="App"></div>
     </>
   );

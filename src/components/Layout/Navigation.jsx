@@ -1,11 +1,11 @@
-import React, {useContext} from 'react'
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import {NavbarContext} from '../../global/NavbarContext'
+import { useGameContext } from "../../global/Context";
+import { NavbarContext } from "../../../unused/NavbarContext";
 
 function Navigation() {
-  const { showNavbar } = useContext(NavbarContext);
+  const { showNavbar } = useGameContext();
 
-  
   const items = [
     {
       name: "Home",
@@ -31,22 +31,22 @@ function Navigation() {
       name: "Not Found",
       to: "*",
       id: 4,
-    }
+    },
   ];
-  return (
-
-    showNavbar?
-      <header>
-        <nav className="nav_container">
-            <ul>
-           {items.map(item=><li key={item.id}> <NavLink to={item.to}>{item.name}</NavLink></li>)}
-          </ul>
-        </nav>
-      </header>
-      :  null
-  );
+  return showNavbar ? (
+    <header>
+      <nav className="nav_container">
+        <ul>
+          {items.map((item) => (
+            <li key={item.id}>
+              {" "}
+              <NavLink to={item.to}>{item.name}</NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  ) : null;
 }
 
 export default Navigation;
-
-

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { GiSoundOn, GiSoundOff } from "react-icons/gi"
 import useSound from 'use-sound'
+// import { SoundContext } from '../../App';
+import { useGameContext } from '../../global/Context';
 
 
 function Footer() {
@@ -10,7 +12,7 @@ function Footer() {
     { volume: 0.1 }
   );
 
-  const [isSoundOn, setIsSoundOn] = useState(false);
+  const {isSoundOn, setIsSoundOn} = useGameContext();
 
   function handleSoundClick() {
     if (isSoundOn) {

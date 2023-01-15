@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "../styles/homepage.modules.css";
 import { useNavigate } from "react-router-dom";
-import { NavbarContext } from "../global/NavbarContext";
+import { NavbarContext } from "../../unused/NavbarContext";
+import { useGameContext } from "../global/Context";
 
 function HomePage() {
-  const { showNavbar, setShowNavbar } = useContext(NavbarContext);
-  console.log("🚀 ~ file: HomePage.jsx:7 ~ HomePage ~ showNavbar", showNavbar);
+  const { showNavbar, setShowNavbar } = useGameContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,5 +21,4 @@ function HomePage() {
     </div>
   );
 }
-
 export default HomePage;

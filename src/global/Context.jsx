@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import {NavbarContext} from './NavbarContext'
+// import {NavbarContext} from './NavbarContext'
 
 // nur dynamic variables in context
 // initialisert context object
 const GameContext = React.createContext();
 
+// renaming
 export function useGameContext() {
   return useContext(GameContext);
 }
@@ -17,12 +18,13 @@ export function GameContextProvider({ children }) {
     wrongAnswers: 0,
   });
   const [showNavbar, setShowNavbar] = useState(true)
+  const [isSoundOn, setIsSoundOn] = useState(false);
+  const [savedQuestions, setSavedQuestions] = useState([]);
+
 
   return (
-    <NavbarContext.Provider value={{showNavbar, setShowNavbar}}>
-    <GameContext.Provider value={{ gameData, setGameData, result, setResult }}>
+    <GameContext.Provider value={{ gameData, setGameData, result, setResult,showNavbar, setShowNavbar, savedQuestions, setSavedQuestions }}>
       {children}
     </GameContext.Provider>
-    </NavbarContext.Provider>
   );
 }

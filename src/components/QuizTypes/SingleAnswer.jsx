@@ -2,29 +2,36 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
 import { useModal } from "../../../unused/useModal";
-import { NavbarContext } from "../../global/NavbarContext";
+import { NavbarContext } from "../../../unused/NavbarContext";
+
 
 function SingleAnswer() {
-  const { gameData, result, setResult } = useGameContext();
-  const {showNavbar, setShowNavbar} = useContext(NavbarContext)
-
+  const { gameData, result, setResult, showNavbar, setShowNavbar, savedQuestions, setSavedQuestions } = useGameContext();
   const [showModal, setShowModal] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerText, setSelectedAnswerText] = useState("");
   const [answeredCorrect, setAnsweredCorrect] = useState(false);
-  const [savedQuestions,setSavedQuestions] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(gameData[currentQuestionIndex])
 
-  const currentQuestion = gameData[currentQuestionIndex];
+
   const correctAnswers = Object.values(currentQuestion.correct_answers);
-//  FIX! THIS
-  // const currentCorrectAnswer = correctAnswers === true ? wir brauchen den value
   const indexOfCorrectAnswer = correctAnswers.findIndex(
     (answer) => answer === "true"
   );
+  const correctAnswer = Object.entries(currentQuestion.correct_answers).filter(
+    ([key, value]) => value === "true"
+  );
+  const correctAnswerKey = correctAnswer[0][0];
+  const correctAnswerValue =
+    currentQuestion.answers[correctAnswerKey.replace("_correct", "")];
+
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (currentQuestionIndex === gameData.length - 1) {
+    setCurrentQuestion(gameData[currentQuestionIndex])
+    if (currentQuestionIndex === gameData.length) {
       navigate("/final_score");
     }
   }, [currentQuestionIndex, gameData.length, navigate]);
@@ -41,8 +48,8 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
-      setAnsweredCorrect(true)
-      setShowNavbar(false)
+      setAnsweredCorrect(true);
+      setShowNavbar(false);
       setShowModal((prev) => !prev);
     } else {
       setResult((prev) => {
@@ -53,8 +60,8 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
-      setAnsweredCorrect(false)
-      setShowNavbar(false)
+      setAnsweredCorrect(false);
+      setShowNavbar(false);
       setShowModal((prev) => !prev);
     }
   };
@@ -62,18 +69,25 @@ function SingleAnswer() {
   const handleSelectChange = (answer) => {
     setSelectedAnswer(answer);
   };
-  const handleModalButton = () =>{
-    setShowModal(false)
-    setShowNavbar(true)
+  const handleModalButton = () => {
+    setShowModal(false);
+    setShowNavbar(true);
     setCurrentQuestionIndex((prev) => {
-      console.log("🚀 ~ file: SingleAnswer.jsx:61 ~ handleAnswer ~ setCurrentQuestionIndex", setCurrentQuestionIndex)
-      return prev + 1
-    })
-  }
-  const saveQuestion=()=>{
-    setSavedQuestions((prev) => [...prev, { question: currentQuestion, answers: currentQuestion.answers, selectedAnswer }]);
-    console.log(savedQuestions)
-  }
+      return prev + 1;
+    });
+  };
+  const saveQuestion = () => {
+    // console.log(savedQuestions);
+    setSavedQuestions((prev) => [
+      ...prev,
+      {
+        question: currentQuestion,
+        answers: currentQuestion.answers,
+        selectedAnswer,
+      },
+    
+  ],console.log(savedQuestions));
+  };
   {
     /* random id : crypto.randomUUID() */
   }
@@ -82,8 +96,10 @@ function SingleAnswer() {
       className="card"
       style={{ height: "75vh", marginTop: "15rem", width: "60vw" }}
     >
-      <div 
-      className={`background ${showModal ? 'background-blur' : 'takeQuiz_container'}`}
+      <div
+        className={`background ${
+          showModal ? "background-blur" : "takeQuiz_container"
+        }`}
       >
         <div className="question">{currentQuestion.question}</div>
         <div className="answers_container">
@@ -101,13 +117,12 @@ function SingleAnswer() {
                       id={randomID}
                       onChange={() => handleSelectChange(key)}
                       checked={selectedAnswer === key ? true : false}
-
-                      />
+                    />
                     <label
                       className="label_quiz"
                       htmlFor={randomID}
                       key={crypto.randomUUID()}
-                      >
+                    >
                       {currentQuestion.answers[key]}{" "}
                     </label>
                     <br />
@@ -117,41 +132,40 @@ function SingleAnswer() {
             })}
           </form>
           <div className="buttons_singleAnswer_container">
-          <button classname="save_button" onClick={saveQuestion}>Save Question</button>
-          <button
-            className="next_button"
-            onClick={() => {
-              handleAnswer(selectedAnswer);
-              setSelectedAnswerText(currentQuestion.answers[selectedAnswer]);
-            }}
-            disabled={selectedAnswer === ""}
-          >
-            Next Question
-          </button>
+            <button className="save_button" onClick={saveQuestion}>
+              Save Question
+            </button>
+            <button
+              className="next_button"
+              onClick={() => {
+                handleAnswer(selectedAnswer);
+                setSelectedAnswerText(currentQuestion.answers[selectedAnswer]);
+              }}
+              disabled={selectedAnswer === ""}
+            >
+              Next Question
+            </button>
           </div>
         </div>
       </div>
       {showModal && (
         <div className="modal_overlay">
           <div className="modal_content">
+            <h2 className="modal_question"> {currentQuestion.question}</h2>
+            {answeredCorrect ? (
+              <>
+                <p className="correct_answer">Your answer is correct!</p>
+              </>
+            ) : (
+              <>
+                <p className="wrong_answer">Wrong..</p>
+                <br />
+                <p>The correct answer is:</p>
+              </>
+            )}
+            <br />
+            <p className="correct_answer">{correctAnswerValue}</p>
 
-<h2 className="modal_question"> {currentQuestion.question}</h2>
-          {answeredCorrect?
-            <> 
-            <p className="correct_answer">Your answer is correct!</p>
-            </>
-          :<>
-          <p className="wrong_answer">Wrong..</p>
-          <br />
-          <p>The correct answer is:
-            THIS IS WRONG; FIX IT:
-            - displays selected answer not correct answer  </p>
-          </>
-        }
-              <br />
-              <p className="correct_answer">{selectedAnswerText}</p>
-              {selectedAnswer}
-          
             <br />
             <button onClick={handleModalButton}>Close</button>
           </div>

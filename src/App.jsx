@@ -1,3 +1,4 @@
+import React, {useState, createContext} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ChooseQuiz from "./Pages/ChooseQuiz";
@@ -8,14 +9,16 @@ import FinalScore from "./Pages/FinalScore";
 import NotFound from "./Pages/NotFound";
 import { GameContextProvider } from "./global/Context";
 
+// PROVIDER - alle einzeln, wie kombinieren?
+// doppelrendern by firstload quiz
+// deploychaos
 
 
 function App() {
 
   return (
     <>
-      
-        <BrowserRouter>
+      <BrowserRouter>
         <GameContextProvider>
           <Layout>
             <Routes>
@@ -26,13 +29,9 @@ function App() {
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>
-         </GameContextProvider>
-         </BrowserRouter>
-     
-      <div className="App">
-      </div>
-         
-       
+        </GameContextProvider>
+      </BrowserRouter>
+      <div className="App"></div>
     </>
   );
 }

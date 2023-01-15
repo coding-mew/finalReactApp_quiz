@@ -25,8 +25,8 @@ const routes = [
   // leitet von / nach /home
   { path: "/", element: <Navigate to="home" />, id: 5 },
   //  ???
-  { path: "/finalReactApp_quiz/", element: <Navigate to="home" />, id: 6 },
-  { path: "/quiz/", element: <Navigate to="home" />, id: 7 },
+  { path: "/finalReactApp_quiz/", element: <Navigate to="/home" />, id: 6 },
+  { path: "/quiz/", element: <Navigate to="/home" />, id: 7 },
 
 
   {

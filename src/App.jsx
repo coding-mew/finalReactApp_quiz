@@ -1,5 +1,5 @@
 import React, {useState, createContext} from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import ChooseQuiz from "./Pages/ChooseQuiz";
 import HomePage from "./Pages/HomePage";

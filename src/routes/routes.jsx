@@ -6,7 +6,7 @@ import FinalScore from "../components/Pages/FinalScore";
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     element: <HomePage />,
     id: 1,
   },
@@ -23,10 +23,10 @@ const routes = [
   // default 404
   { path: "*", element: <NotFound />, id: 4 },
   // leitet von / nach /home
-  { path: "/", element: <Navigate to="/home" />, id: 5 },
+  { path: "/", element: <Navigate to="/" />, id: 5 },
   //  ???
   { path: "/finalReactApp_quiz/", element: <Navigate to="/home" />, id: 6 },
-  { path: "/quiz/", element: <Navigate to="/home" />, id: 7 },
+  { path: "/quiz/", element: <Navigate to="/" />, id: 7 },
   {
     path: "/final_score",
     element: <FinalScore />,

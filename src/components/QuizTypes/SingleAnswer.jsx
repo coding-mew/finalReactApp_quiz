@@ -17,6 +17,8 @@ function SingleAnswer() {
 
   const currentQuestion = gameData[currentQuestionIndex];
   const correctAnswers = Object.values(currentQuestion.correct_answers);
+//  FIX! THIS
+  // const currentCorrectAnswer = correctAnswers === true ? wir brauchen den value
   const indexOfCorrectAnswer = correctAnswers.findIndex(
     (answer) => answer === "true"
   );
@@ -141,7 +143,9 @@ function SingleAnswer() {
           :<>
           <p className="wrong_answer">Wrong..</p>
           <br />
-          <p>The correct answer is:  </p>
+          <p>The correct answer is:
+            THIS IS WRONG; FIX IT:
+            - displays selected answer not correct answer  </p>
           </>
         }
               <br />

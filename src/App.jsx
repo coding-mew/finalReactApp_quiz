@@ -28,7 +28,6 @@ function App() {
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/final_score" element={<FinalScore />} />
               <Route path="/saved_questions" element={<SavedQuestions/>} />
-
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>

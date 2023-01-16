@@ -142,7 +142,7 @@ function SingleAnswer() {
           </form>
           <div className="buttons_singleAnswer_container">
             <button className="save_button" onClick={saveQuestion}>
-              Save Question
+              Save
             </button>
             <button
               className="next_button"
@@ -152,7 +152,7 @@ function SingleAnswer() {
               }}
               disabled={selectedAnswer === ""}
             >
-              Next Question
+              Next
             </button>
           </div>
         </div>

@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
-import { useGameContext } from '../global/Context'
+import React, { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { GameContext } from '../global/Context'
+import { useNavigate } from 'react-router-dom'
 
 function SavedQuestions() {
-  const { savedQuestions } = useGameContext();
+  const { savedQuestions } = useContext(GameContext);
   const [localSavedQuestions, setLocalSavedQuestions] = useState(JSON.parse(localStorage.getItem("savedQuestions")) || []);
   const [currentSavedQuestionIndex, setcurrentSavedQuestionIndex] = useState(0);
- 
-  localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
+  }, [savedQuestions]);
+  
+  useEffect(() => {
+    if (currentSavedQuestionIndex === localSavedQuestions.length - 1) {
+      navigate('/');
+    }
+  }, [currentSavedQuestionIndex, localSavedQuestions, navigate]);
   
   const handleDelete = (index) => {
     const updatedQuestions = localSavedQuestions.filter((_, i) => i !== index);
     localStorage.setItem("savedQuestions", JSON.stringify(updatedQuestions));
-    setLocalSavedQuestions(updatedQuestions)
+    setLocalSavedQuestions(updatedQuestions);
     if (index === currentSavedQuestionIndex) {
       setcurrentSavedQuestionIndex(0);
     }
@@ -23,7 +34,7 @@ function SavedQuestions() {
 
   return (
     <div className="card">
-        {console.log(localSavedQuestions)}
+ <h2>Saved Questions</h2>
       <ul>
         {localSavedQuestions.length > 0 &&
           <li key={localSavedQuestions[currentSavedQuestionIndex].question.id}>
@@ -42,7 +53,7 @@ function SavedQuestions() {
               })}
             </ul>
             <p>Selected Answer: {localSavedQuestions[currentSavedQuestionIndex].selectedAnswer}</p>
-            <button className="next_button" onClick={() => handleDelete(currentSavedQuestionIndex)}>Delete</button>
+            <button onClick={() => handleDelete(currentSavedQuestionIndex)}>Delete</button>
             <button onClick={handleNext}>Next</button>
           </li>
         }

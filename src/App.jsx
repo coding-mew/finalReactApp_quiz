@@ -8,6 +8,7 @@ import Quiz from "./Pages/Quiz";
 import FinalScore from "./Pages/FinalScore";
 import NotFound from "./Pages/NotFound";
 import { GameContextProvider } from "./global/Context";
+import SavedQuestions from "./Pages/SavedQuestions";
 
 // PROVIDER - alle einzeln, wie kombinieren?
 // doppelrendern by firstload quiz
@@ -26,6 +27,8 @@ function App() {
               <Route path="/choose_quiz" element={<ChooseQuiz />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/final_score" element={<FinalScore />} />
+              <Route path="/saved_questions" element={<SavedQuestions/>} />
+
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>

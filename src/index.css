@@ -64,6 +64,7 @@ select {
   transition: border-color 0.25s;
   overflow: scroll;
   text-align: center;
+  overflow:hidden;
 }
 button:hover,
 select:hover,
@@ -117,6 +118,7 @@ button:focus-visible {
   cursor: pointer;
   /* font-family: cursive; */
   transition: transform 1s;
+  overflow:hidden;
 }
 
 .card:hover {
@@ -288,6 +290,7 @@ input[type="submit"] {
   text-align: center;
   margin: 2rem 0 0 2rem;
   padding: 5px;
+  overflow: hidden;
 }
 input[type="submit"] {
   text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500,

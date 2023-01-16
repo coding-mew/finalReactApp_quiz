@@ -28,9 +28,14 @@ function Navigation() {
       id: 3,
     },
     {
+      name: "Saved",
+      to: "/saved_questions",
+      id: 4,
+    },
+    {
       name: "Not Found",
       to: "*",
-      id: 4,
+      id: 5,
     },
   ];
   return showNavbar ? (

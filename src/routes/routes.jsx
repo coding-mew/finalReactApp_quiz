@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import NotFound from "../pages/NotFound";
 import ChooseQuiz from "../components/Pages/ChooseQuiz";
 import FinalScore from "../components/Pages/FinalScore";
+import SavedQuestions from "../Pages/SavedQuestions";
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: "/final_score",
     element: <FinalScore />,
     id: 8,
+  },
+  {
+    path: "/saved_questions",
+    element: <SavedQuestions />,
+    id: 9,
   }
 ];
 

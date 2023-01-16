@@ -11,15 +11,18 @@ A quiz app, that covers different topics on programming
     - etc...
    
 # Used Laguages Technologies and Tools
-> HTML5, CSS3, JavaScript
-> React 6 
-    (useEffect, useSound, useContext/Providing, useRef, useState, useNavigate, routing, )
-> Vite, QuizApi.io, hidden API key, crypto.randomUUID()
+- HTML5, CSS3, JavaScript
+- React 6 
+    - (useEffect, useSound, useContext/Providing, useRef, useState, useNavigate, routing, )
+    - react router dom
+    - react icons
+- Vite, QuizApi.io, hidden API key, crypto.randomUUID()
 
 
 # To Do
-> work on responsitivity for smaller screens and burger menu
-> how to make music play again when finished playing???
+- work on responsitivity for smaller screens and burger menu
+- how to make music play again when finished?
+- Why no animation in safari?
 
 
 # Further Ideas

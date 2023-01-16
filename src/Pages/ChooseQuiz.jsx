@@ -31,11 +31,8 @@ function ChooseQuiz() {
     }
     navigateToQuiz("/quiz");
   };
-  console.log(gameData);
-
   const apiKey = import.meta.env.VITE_API_KEY;
   const url = `https://quizapi.io/api/v1/questions?apiKey=${apiKey}&limit=${amountQuestions}&tags=${topic}`;
-  console.log(url);
   return (
     <div className="card">
       <div className="choose_quiz_container">

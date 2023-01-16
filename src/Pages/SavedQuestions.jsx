@@ -28,7 +28,6 @@ function SavedQuestions() {
     setLocalSavedQuestions(updatedQuestions);
     if (isSoundOn) {
       playClearDataSound();
-      console.log("deleted data")
     }
     if (index === currentSavedQuestionIndex) {
       setcurrentSavedQuestionIndex(0);
@@ -58,7 +57,6 @@ function SavedQuestions() {
         </div>
       ) : (
         <div className="saved_container">
-          {console.log(localSavedQuestions)}
           <ul>
             {localSavedQuestions.length > 0 && (
               <li
@@ -73,10 +71,6 @@ function SavedQuestions() {
                 </h3>
                 <p>Answers:</p>
                 <ul>
-                  {console.log(
-                    "question",
-                    localSavedQuestions[currentSavedQuestionIndex]
-                  )}
                   {Object.entries(
                     localSavedQuestions[currentSavedQuestionIndex].question
                       .answers

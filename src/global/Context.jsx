@@ -20,7 +20,6 @@ export function GameContextProvider({ children }) {
   const [showNavbar, setShowNavbar] = useState(true);
   const [isSoundOn, setIsSoundOn] = useState(false);
   const [savedQuestions, setSavedQuestions] = useState([]);
-  console.log(savedQuestions);
   return (
     <GameContext.Provider
       value={{

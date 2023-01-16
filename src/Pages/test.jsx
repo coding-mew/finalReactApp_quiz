@@ -23,14 +23,12 @@ function SavedQuestions() {
 
   return (
     <div className="card">
-        {console.log(localSavedQuestions)}
       <ul>
         {localSavedQuestions.length > 0 &&
           <li className="list_saved"key={localSavedQuestions[currentSavedQuestionIndex].question.id}>
             <h3>{localSavedQuestions[currentSavedQuestionIndex].question.question}</h3>
             <p>Answers:</p>
             <ul>
-                {console.log("question", localSavedQuestions[currentSavedQuestionIndex])}
               {Object.entries(localSavedQuestions[currentSavedQuestionIndex].question.answers).map(([key, value]) => {
                 if (localSavedQuestions[currentSavedQuestionIndex].question.answers[key] !== null)
                 return (

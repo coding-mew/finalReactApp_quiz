@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
 import { useGameContext } from "../global/Context";
-import startSound from '../assets/sounds/mixkit-sci-fi-construction-complete-811.wav'
+import startSound from '../assets/sounds/start.wav'
 
 function HomePage() {
   const { showNavbar, setShowNavbar, isSoundOn, setIsSoundOn } =

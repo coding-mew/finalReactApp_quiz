@@ -66,6 +66,7 @@ select,
   overflow: scroll;
   text-align: center;
   overflow:hidden;
+  margin:.2rem;
 }
 button:hover,
 select:hover,
@@ -321,6 +322,8 @@ input[type="submit"] {
 .next_button,
 .save_button {
   margin: 2rem;
+  font-size: 2rem;
+  margin-left:3rem;
 }
 /* .save_button:visited{
   border: none;
@@ -365,6 +368,7 @@ input[type="submit"] {
   width: 70%;
 }
 .home_animation {
+  cursor:pointer;
   position: relative;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 3rem;
@@ -378,6 +382,9 @@ input[type="submit"] {
   white-space: nowrap;
   filter: blur(0.007em);
   animation: shake 2.5s linear forwards;
+}
+.home_animation:hover {
+  cursor:pointer;
 }
 
 .home_animation span {

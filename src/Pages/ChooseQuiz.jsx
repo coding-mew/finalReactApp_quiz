@@ -2,13 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../global/Context";
+import useSound from "use-sound";
+import generateQuizSound from '../assets/sounds/generateQuiz.wav'
+
 
 function ChooseQuiz() {
   // const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");
   const [amountQuestions, setAmountQuestions] = useState(5);
-  const { gameData, setGameData, showNavbar, setShowNavbar } = useGameContext();
+  const { gameData, setGameData, showNavbar, setShowNavbar, isSoundOn } = useGameContext();
   const navigateToQuiz = useNavigate();
+
+  const [play, { stop }] = useSound(generateQuizSound, { volume: 0.3 });
 
   const fetchingData = async () => {
     await axios.get(url).then(async (res) => {
@@ -23,7 +28,10 @@ function ChooseQuiz() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     fetchingData();
-    
+    if (isSoundOn) {
+      play();
+      // setIsSoundOn(false);
+    }
     navigateToQuiz("/quiz");
   };
   console.log(gameData);

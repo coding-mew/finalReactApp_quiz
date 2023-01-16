@@ -10,9 +10,9 @@ function SavedQuestions() {
   const [currentSavedQuestionIndex, setcurrentSavedQuestionIndex] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
-  }, [savedQuestions]);
+  // useEffect(() => {
+  //   localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
+  // }, [savedQuestions]);
 
   const handleDelete = (index) => {
     const updatedQuestions = localSavedQuestions.filter((_, i) => i !== index);
@@ -73,10 +73,6 @@ function SavedQuestions() {
                       return (
                         <li className="saved_answers" key={crypto.randomUUID()}>
                           {value}
-                          {localSavedQuestions[currentSavedQuestionIndex]
-                            .question.correct_answers[key + "_correct"] && (
-                            <span> (Correct Answer)</span>
-                          )}
                         </li>
                       );
                   })}

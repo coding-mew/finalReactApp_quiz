@@ -2,19 +2,20 @@ import React from "react";
 import { useGameContext } from "../../global/Context";
 
 function Top() {
-  const { result, gameData } = useGameContext();
+  const { result} = useGameContext();
 
   return (
     <div>
-      Top Score: {result.score}
+      <p>
+        Congratulation!
+      </p>
+      Your Score is: {result.score} Points
       <br />
-      Correct:{result.correctAnswers}
       <br />
-      Wrong {result.wrongAnswers}
+      You answered {result.correctAnswers} questions correct.
       <br />
-      GameData.length: {gameData.length}
+      You answered {result.wrongAnswers} questions wrong.
       <br />
-      {/* do you want to review your SAVED QUESTIONS? - navigate to*/}
     </div>
   );
 }

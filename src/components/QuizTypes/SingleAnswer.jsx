@@ -1,16 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useSound from "use-sound";
+import nextQuestionSound from "../../assets/sounds/nextQuestion.wav";
+import saveQuestionSound from "../../assets/sounds/saveQuestion.wav";
 import { useGameContext } from "../../global/Context";
+
+function AnswerModal({
+  currentQuestion,
+  answeredCorrect,
+  correctAnswerValue,
+  handleModalButton,
+}) {
+  return (
+    <div className="modal_overlay">
+      <div className="modal_content">
+        <h2 className="modal_question"> {currentQuestion.question}</h2>
+        {answeredCorrect ? (
+          <>
+            <p className="correct_answer">Your answer is correct!</p>
+          </>
+        ) : (
+          <>
+            <p className="wrong_answer">Wrong..</p>
+            <br />
+            <p>The correct answer is:</p>
+          </>
+        )}
+        <br />
+        <p className="correct_answer">{correctAnswerValue}</p>
+        <br />
+        <button onClick={handleModalButton}>Close</button>
+      </div>
+    </div>
+  );
+}
 
 function SingleAnswer() {
   const {
     gameData,
-    result,
     setResult,
-    showNavbar,
     setShowNavbar,
     savedQuestions,
     setSavedQuestions,
+    isSoundOn,
   } = useGameContext();
   const [showModal, setShowModal] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -22,7 +54,6 @@ function SingleAnswer() {
   const [currentQuestion, setCurrentQuestion] = useState(
     gameData[currentQuestionIndex]
   );
-
   const correctAnswers = Object.values(currentQuestion.correct_answers);
   const indexOfCorrectAnswer = correctAnswers.findIndex(
     (answer) => answer === "true"
@@ -33,8 +64,14 @@ function SingleAnswer() {
   const correctAnswerKey = correctAnswer[0][0];
   const correctAnswerValue =
     currentQuestion.answers[correctAnswerKey.replace("_correct", "")];
+  const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.3 });
+  const [playNext, { stopNext }] = useSound(nextQuestionSound, { volume: 0.3 });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
+  }, [savedQuestions]);
 
   useEffect(() => {
     setCurrentQuestion(gameData[currentQuestionIndex]);
@@ -46,19 +83,25 @@ function SingleAnswer() {
   const handleAnswer = (answer) => {
     let keys = Object.keys(currentQuestion.answers);
     let indexOfSelectedAnswer = keys.indexOf(answer);
+    //  const handleCorrectAnswer =....
+    // const handleWrongAnswer = ...
+    // const setUseStates =....
     if (indexOfCorrectAnswer === indexOfSelectedAnswer) {
       setResult((prev) => {
         return {
           ...prev,
-          score: prev.score + 5,
+          score: prev.score + 10,
           correctAnswers: prev.correctAnswers + 1,
         };
       });
       setSelectedAnswer("");
-      setAnsweredCorrect(true);
       setShowNavbar(false);
       setIsCardFlipped(!isCardFlipped);
       setShowModal((prev) => !prev);
+      if (isSoundOn) {
+        playNext();
+      }
+      setAnsweredCorrect(true);
     } else {
       setResult((prev) => {
         return {
@@ -68,10 +111,13 @@ function SingleAnswer() {
         };
       });
       setSelectedAnswer("");
-      setAnsweredCorrect(false);
       setShowNavbar(false);
       setIsCardFlipped(!isCardFlipped);
       setShowModal((prev) => !prev);
+      if (isSoundOn) {
+        playNext();
+      }
+      setAnsweredCorrect(false);
     }
   };
 
@@ -84,18 +130,22 @@ function SingleAnswer() {
     setCurrentQuestionIndex((prev) => {
       return prev + 1;
     });
+    if (isSoundOn) {
+      playNext();
+    }
   };
   const saveQuestion = () => {
-    setSavedQuestions(
-      (prev) => [
-        ...prev,
-        {
-          question: currentQuestion,
-          answers: currentQuestion.answers,
-          selectedAnswer,
-        },
-      ],
-    );
+    setSavedQuestions((prev) => [
+      ...prev,
+      {
+        question: currentQuestion,
+        answers: currentQuestion.answers,
+        selectedAnswer,
+      },
+    ]);
+    if (isSoundOn) {
+      playSave();
+    }
   };
   {
     /* random id : crypto.randomUUID() */
@@ -158,27 +208,12 @@ function SingleAnswer() {
         </div>
       </div>
       {showModal && (
-        <div className="modal_overlay">
-          <div className="modal_content">
-            <h2 className="modal_question"> {currentQuestion.question}</h2>
-            {answeredCorrect ? (
-              <>
-                <p className="correct_answer">Your answer is correct!</p>
-              </>
-            ) : (
-              <>
-                <p className="wrong_answer">Wrong..</p>
-                <br />
-                <p>The correct answer is:</p>
-              </>
-            )}
-            <br />
-            <p className="correct_answer">{correctAnswerValue}</p>
-
-            <br />
-            <button onClick={handleModalButton}>Close</button>
-          </div>
-        </div>
+        <AnswerModal
+          currentQuestion={currentQuestion}
+          answeredCorrect={answeredCorrect}
+          correctAnswerValue={correctAnswerValue}
+          handleModalButton={handleModalButton}
+        />
       )}
     </div>
   );

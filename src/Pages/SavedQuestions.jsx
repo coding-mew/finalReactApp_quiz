@@ -1,23 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../global/Context";
+import useSound from "use-sound";
+import clearDataSound from "../assets/sounds/clearData.wav";
+import nextSound from "../assets/sounds/nextQuestion.wav";
+
+
+
+
 
 function SavedQuestions() {
-  const { savedQuestions } = useGameContext();
+  const { savedQuestions, isSoundOn } = useGameContext();
   const [localSavedQuestions, setLocalSavedQuestions] = useState(
     JSON.parse(localStorage.getItem("savedQuestions")) || []
   );
   const [currentSavedQuestionIndex, setcurrentSavedQuestionIndex] = useState(0);
-  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   localStorage.setItem("savedQuestions", JSON.stringify(savedQuestions));
-  // }, [savedQuestions]);
+  const [playClearDataSound, { stopClearDataSound }] = useSound(clearDataSound, { volume: 0.6 });
+
+  const [playNextSound, { stopNextSound }] = useSound(nextSound, { volume: 0.6 });
+
+  const navigate = useNavigate();
 
   const handleDelete = (index) => {
     const updatedQuestions = localSavedQuestions.filter((_, i) => i !== index);
     localStorage.setItem("savedQuestions", JSON.stringify(updatedQuestions));
     setLocalSavedQuestions(updatedQuestions);
+    if (isSoundOn) {
+      playClearDataSound();
+      console.log("deleted data")
+    }
     if (index === currentSavedQuestionIndex) {
       setcurrentSavedQuestionIndex(0);
     }
@@ -25,6 +37,9 @@ function SavedQuestions() {
 
   const handleNext = () => {
     setcurrentSavedQuestionIndex(currentSavedQuestionIndex + 1);
+    if (isSoundOn) {
+      playNextSound();
+    }
   };
 
   const handleNavigateHome = () => {

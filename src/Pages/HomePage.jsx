@@ -8,7 +8,7 @@ function HomePage() {
   const { setShowNavbar, isSoundOn} =
     useGameContext();
 
-  const [play, { stop }] = useSound(startSound, { volume: 0.3 });
+  const [play, { stop }] = useSound(startSound, { volume: 0.8 });
 
   const navigate = useNavigate();
 

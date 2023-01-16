@@ -6,7 +6,7 @@ import radiowavesSound from "../../assets/sounds/Radio_Waves_Earth_Magnetosphere
 import { useGameContext } from "../../global/Context";
 
 function Footer() {
-  const [play, { stop }] = useSound(startsong, { volume: 0.3 });
+  const [play, { stop }] = useSound(startsong, { volume: 0.2 });
   const [playRadiowaves, { stopRadiowaves }] = useSound(radiowavesSound, {
     volume: 0.3,
   });

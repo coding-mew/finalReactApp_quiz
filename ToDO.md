@@ -1,7 +1,3 @@
+# work on responsive design on smaler screens
 
-
-# overall
--sound overall 
-
-# quiz: check length of array to not render anymore qwhen theres no data left
-
+# burger menu for small screens 

@@ -149,7 +149,7 @@ button:focus-visible {
   z-index: -1;
   top: -1%;
   left: -2%;
-  /* animation: spin 6s linear infinite; */
+  animation: spin 6s linear infinite;
 }
 
 .card::after {
@@ -172,7 +172,7 @@ button:focus-visible {
   );
   opacity: 1;
   transition: opacity 0.5s;
-  /* animation: spin 6s linear infinite; */
+  animation: spin 6s linear infinite;
 }
 
 @keyframes spin {

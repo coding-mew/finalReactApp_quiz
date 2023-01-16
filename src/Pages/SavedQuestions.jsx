@@ -1,4 +1,9 @@
 import React from 'react'
+import { useGameContext } from '../global/Context'
+
+
+const {savedQuestions} = useGameContext();
+console.log("🚀 ~ file: SavedQuestions.jsx:6 ~ savedQuestions", savedQuestions)
 
 // import useState savedQuestions -> local storage, display from
 

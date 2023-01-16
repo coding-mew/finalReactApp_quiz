@@ -6,9 +6,9 @@ import { useGameContext } from "../../global/Context";
 import startsong from './monk-chant-fantasy-23137.mp3'
 
 function Footer() {
-  const soundUrl = "../../assets/sounds/monk-chant-fantasy-23137.mp3";
-  const soundUrl2 ='../../assets/sounds/start.wav'
-  const soundUrl3 = './monk-chant-fantasy-23137.mp3'
+  // const soundUrl = "../../assets/sounds/monk-chant-fantasy-23137.mp3";
+  // const soundUrl2 ='../../assets/sounds/start.wav'
+  // const soundUrl3 = './monk-chant-fantasy-23137.mp3'
 
   const [play, { stop }] = useSound(startsong, { volume: 0.3 });
 

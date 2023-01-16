@@ -86,7 +86,7 @@ function SingleAnswer() {
     });
   };
   const saveQuestion = () => {
-    // console.log(savedQuestions);
+    console.log("before ", savedQuestions);
     setSavedQuestions(
       (prev) => [
         ...prev,
@@ -96,7 +96,7 @@ function SingleAnswer() {
           selectedAnswer,
         },
       ],
-      console.log(savedQuestions)
+      console.log("after", savedQuestions)
     );
   };
   {

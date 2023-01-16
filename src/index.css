@@ -52,7 +52,7 @@ h1 {
 button,
 select {
   border-radius: 8px;
-  /* border: 1px solid transparent; */
+  border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -115,6 +115,7 @@ button:focus-visible {
   color: rgb(88 199 250);
   cursor: pointer;
   /* font-family: cursive; */
+  transition: transform 1s;
 }
 
 .card:hover {
@@ -143,7 +144,7 @@ button:focus-visible {
   z-index: -1;
   top: -1%;
   left: -2%;
-  /* animation: spin 2.9s linear infinite; */
+  /* animation: spin 6s linear infinite; */
 }
 
 .card::after {
@@ -166,7 +167,7 @@ button:focus-visible {
   );
   opacity: 1;
   transition: opacity 0.5s;
-  /* animation: spin 2.9s linear infinite; */
+  /* animation: spin 6s linear infinite; */
 }
 @media only screen and (max-width: 600px) {
 }
@@ -178,6 +179,7 @@ button:focus-visible {
     --rotate: 360deg;
   }
 }
+
 
 /* ____________________________NAVBAR_________________ */
 
@@ -298,12 +300,42 @@ input[type="submit"] {
   margin-top: 3rem;
   width: 60vw;
 }
-.next_button {
+.next_button,
+.save_button {
   margin: 2rem;
 }
 /* .save_button:visited{
   border: none;
 } */
+@media screen and (max-width: 415px) {
+  .takeQuiz_container {
+    /* height: 100%; */}
+  .next_button,
+  .save_button{
+    padding: 0px;
+    /* margin-top:1rem; */
+    /* width:20vw; */
+    /* max-height:80vh; */
+    font-size:.8rem;
+    /* position:fixed; */
+    left:40%;
+    /* margin:2rem; */
+  }
+  .label_quiz,
+  input[type="submit"]{
+    width:20vw;
+    display:block;
+    margin-left:0;
+    font-size: 1rem;
+  }
+  .buttons_singleAnswer_container{
+    max-height: 10%;
+    width: 50vw;
+    display:flex;
+
+  }
+  
+}
 
 /* ________________HOME________________ */
 .home_container {
@@ -426,7 +458,7 @@ input[type="submit"] {
 /* _____________MODAL _________________ */
 .modal_overlay{
   position:fixed;
-  width: 60vw;
+  width: 70vw;
   height: 60vw;
   background-image: url("./assets/pictures/nightsky.avif");
   background-color: #212534;
@@ -460,4 +492,9 @@ input[type="submit"] {
     color: #e96f6f;
     font-size: 1.5rem;
 
+}
+@media screen and (max-width: 415px) {
+  .modal_overlay {
+    height: 100%;
+  }
 }

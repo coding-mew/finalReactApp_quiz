@@ -6,13 +6,7 @@ function Quiz() {
   //  = useContext(GameContext)
   const { gameData } = useGameContext();
 
-  return (
-    <>
-      {gameData.length > 0 && (
-        <SingleAnswer />
-      )}
-    </>
-  );
+  return <>{gameData.length > 0 && <SingleAnswer />}</>;
 }
 
 export default Quiz;

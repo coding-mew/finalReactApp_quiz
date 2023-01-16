@@ -1,18 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { GiSoundOn, GiSoundOff } from "react-icons/gi"
-import useSound from 'use-sound'
-// import { SoundContext } from '../../App';
-import { useGameContext } from '../../global/Context';
-
+import React from "react";
+import { GiSoundOff, GiSoundOn } from "react-icons/gi";
+import useSound from "use-sound";
+import { useGameContext } from "../../global/Context";
 
 function Footer() {
-  const soundUrl = '../../src/assets/sounds/monk-chant-fantasy-23137.mp3'
-  const [play, { stop }] = useSound(
-    soundUrl,
-    { volume: 0.1 }
-  );
+  const soundUrl = "../../src/assets/sounds/monk-chant-fantasy-23137.mp3";
+  const [play, { stop }] = useSound(soundUrl, { volume: 0.1 });
 
-  const {isSoundOn, setIsSoundOn} = useGameContext();
+  const { isSoundOn, setIsSoundOn } = useGameContext();
 
   function handleSoundClick() {
     if (isSoundOn) {
@@ -28,13 +23,13 @@ function Footer() {
     <footer>
       <p className="footer_sound_icons">
         {isSoundOn ? (
-          <GiSoundOff onClick={handleSoundClick}/>
+          <GiSoundOff onClick={handleSoundClick} />
         ) : (
-          <GiSoundOn onClick={handleSoundClick}/>
+          <GiSoundOn onClick={handleSoundClick} />
         )}
       </p>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

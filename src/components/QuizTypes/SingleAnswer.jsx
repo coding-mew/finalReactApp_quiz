@@ -1,20 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
-import { useModal } from "../../../unused/useModal";
-import { NavbarContext } from "../../../unused/NavbarContext";
-
 
 function SingleAnswer() {
-  const { gameData, result, setResult, showNavbar, setShowNavbar, savedQuestions, setSavedQuestions } = useGameContext();
+  const {
+    gameData,
+    result,
+    setResult,
+    showNavbar,
+    setShowNavbar,
+    savedQuestions,
+    setSavedQuestions,
+  } = useGameContext();
   const [showModal, setShowModal] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
+
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerText, setSelectedAnswerText] = useState("");
   const [answeredCorrect, setAnsweredCorrect] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(gameData[currentQuestionIndex])
-
+  const [currentQuestion, setCurrentQuestion] = useState(
+    gameData[currentQuestionIndex]
+  );
 
   const correctAnswers = Object.values(currentQuestion.correct_answers);
   const indexOfCorrectAnswer = correctAnswers.findIndex(
@@ -30,7 +37,7 @@ function SingleAnswer() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrentQuestion(gameData[currentQuestionIndex])
+    setCurrentQuestion(gameData[currentQuestionIndex]);
     if (currentQuestionIndex === gameData.length) {
       navigate("/final_score");
     }
@@ -50,6 +57,7 @@ function SingleAnswer() {
       setSelectedAnswer("");
       setAnsweredCorrect(true);
       setShowNavbar(false);
+      setIsCardFlipped(!isCardFlipped);
       setShowModal((prev) => !prev);
     } else {
       setResult((prev) => {
@@ -62,6 +70,7 @@ function SingleAnswer() {
       setSelectedAnswer("");
       setAnsweredCorrect(false);
       setShowNavbar(false);
+      setIsCardFlipped(!isCardFlipped);
       setShowModal((prev) => !prev);
     }
   };
@@ -78,22 +87,24 @@ function SingleAnswer() {
   };
   const saveQuestion = () => {
     // console.log(savedQuestions);
-    setSavedQuestions((prev) => [
-      ...prev,
-      {
-        question: currentQuestion,
-        answers: currentQuestion.answers,
-        selectedAnswer,
-      },
-    
-  ],console.log(savedQuestions));
+    setSavedQuestions(
+      (prev) => [
+        ...prev,
+        {
+          question: currentQuestion,
+          answers: currentQuestion.answers,
+          selectedAnswer,
+        },
+      ],
+      console.log(savedQuestions)
+    );
   };
   {
     /* random id : crypto.randomUUID() */
   }
   return (
     <div
-      className="card"
+      className={`card ${isCardFlipped ? "flipped" : ""}`}
       style={{ height: "75vh", marginTop: "15rem", width: "60vw" }}
     >
       <div

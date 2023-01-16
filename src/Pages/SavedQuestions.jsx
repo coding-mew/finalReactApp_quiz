@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useGameContext } from "../global/Context";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGameContext } from "../global/Context";
 
 function SavedQuestions() {
   const { savedQuestions } = useGameContext();
@@ -34,8 +34,8 @@ function SavedQuestions() {
   return (
     <div className="card">
       {currentSavedQuestionIndex === localSavedQuestions.length - 1 ? (
-        <div >
-          <h2> There are currently no questions saved</h2>
+        <div>
+          <h2> There are currently no (further) questions saved</h2>
           <br />
           <button className="next_button" onClick={handleNavigateHome}>
             Take a quiz?

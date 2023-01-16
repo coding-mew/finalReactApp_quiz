@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
+import closeModalSound from "../../assets/sounds/closeModal.wav";
 import nextQuestionSound from "../../assets/sounds/nextQuestion.wav";
 import saveQuestionSound from "../../assets/sounds/saveQuestion.wav";
+
 import { useGameContext } from "../../global/Context";
 
 function AnswerModal({
@@ -64,8 +66,12 @@ function SingleAnswer() {
   const correctAnswerKey = correctAnswer[0][0];
   const correctAnswerValue =
     currentQuestion.answers[correctAnswerKey.replace("_correct", "")];
-  const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.3 });
-  const [playNext, { stopNext }] = useSound(nextQuestionSound, { volume: 0.3 });
+  const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.4 });
+  const [playNext, { stopNext }] = useSound(nextQuestionSound, { volume: 0.4 });
+  const [playCloseModalSound, { stopCloseModalSound }] = useSound(
+    closeModalSound,
+    { volume: 0.8 }
+  );
 
   const navigate = useNavigate();
 
@@ -131,7 +137,7 @@ function SingleAnswer() {
       return prev + 1;
     });
     if (isSoundOn) {
-      playNext();
+      playCloseModalSound();
     }
   };
   const saveQuestion = () => {

@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGameContext } from "../global/Context";
 import useSound from "use-sound";
-import generateQuizSound from '../assets/sounds/generateQuiz.wav'
-
+import generateQuizSound from "../assets/sounds/generateQuiz.wav";
+import { useGameContext } from "../global/Context";
 
 function ChooseQuiz() {
   // const [quizData, setQuizData] = useState([]);

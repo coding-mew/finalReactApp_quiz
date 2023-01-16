@@ -1,6 +1,6 @@
 import React from "react";
-import { useGameContext } from "../global/Context";
 import SingleAnswer from "../components/QuizTypes/SingleAnswer";
+import { useGameContext } from "../global/Context";
 
 function Quiz() {
   //  = useContext(GameContext)

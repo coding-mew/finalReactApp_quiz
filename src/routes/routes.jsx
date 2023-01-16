@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import NotFound from "../pages/NotFound";
 import ChooseQuiz from "../components/Pages/ChooseQuiz";
 import FinalScore from "../components/Pages/FinalScore";
+import HomePage from "../pages/HomePage";
+import NotFound from "../pages/NotFound";
 import SavedQuestions from "../Pages/SavedQuestions";
 
 const routes = [
@@ -21,11 +21,8 @@ const routes = [
     element: <ChooseQuiz />,
     id: 3,
   },
-  // default 404
   { path: "*", element: <NotFound />, id: 4 },
-  // leitet von / nach /home
   { path: "/", element: <Navigate to="/" />, id: 5 },
-  //  ???
   { path: "/finalReactApp_quiz/", element: <Navigate to="/home" />, id: 6 },
   { path: "/quiz/", element: <Navigate to="/" />, id: 7 },
   {
@@ -37,7 +34,7 @@ const routes = [
     path: "/saved_questions",
     element: <SavedQuestions />,
     id: 9,
-  }
+  },
 ];
 
 export default routes;

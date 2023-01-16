@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useGameContext } from "../../global/Context";
-import { NavbarContext } from "../../../unused/NavbarContext";
 
 function Navigation() {
   const { showNavbar } = useGameContext();

@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
+import startSound from "../assets/sounds/start.wav";
 import { useGameContext } from "../global/Context";
-import startSound from '../assets/sounds/start.wav'
 
 function HomePage() {
-  const { showNavbar, setShowNavbar, isSoundOn, setIsSoundOn } =
+  const { setShowNavbar, isSoundOn} =
     useGameContext();
-
 
   const [play, { stop }] = useSound(startSound, { volume: 0.3 });
 
@@ -20,12 +19,9 @@ function HomePage() {
   const handleEnterClick = () => {
     if (isSoundOn) {
       play();
-      // setIsSoundOn(false);
     }
     navigate("/choose_quiz");
   };
-  // play();
-
   return (
     <div className="home_container">
       <h1 data-text="Enter the Quiz Universe" className="home_animation">

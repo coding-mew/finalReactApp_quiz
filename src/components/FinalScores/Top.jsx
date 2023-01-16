@@ -2,13 +2,11 @@ import React from "react";
 import { useGameContext } from "../../global/Context";
 
 function Top() {
-  const { result} = useGameContext();
+  const { result } = useGameContext();
 
   return (
     <div>
-      <p>
-        Congratulation!
-      </p>
+      <p>Congratulation!</p>
       Your Score is: {result.score} Points
       <br />
       <br />

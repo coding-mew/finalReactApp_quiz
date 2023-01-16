@@ -5,13 +5,16 @@ import { useNavigate } from "react-router-dom";
 import useSound from 'use-sound'
 import nextQuestionSound from '../assets/sounds/nextQuestion.wav'
 import saveQuestionSound from '../assets/sounds/saveQuestion.wav'
+import clearDataSound from '../assets/sounds/clearData.wav'
 
 
 
 function FinalScore() {
-  const { result, isSoundOn } = useGameContext();
-  const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.3 });
+  const { isSoundOn } = useGameContext();
+  const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.2 });
   const [playNext, { stopNext }] = useSound(nextQuestionSound, { volume: 0.3 });
+  const [playClearData, { stopClearData }] = useSound(clearDataSound, { volume: 0.3 });
+
 
   const navigate = useNavigate();
   const navigateToSaved = () => {
@@ -22,10 +25,16 @@ function FinalScore() {
   };
   const navigateToHome = () => {
     if (isSoundOn) {
-      playNext();
+      playClearData();
     };
     navigate("/");
   };
+  const clearData =() =>{
+    if (isSoundOn) {
+      playClearData();
+    };
+    localStorage.clear();
+  }
   return (
     <div className="card">
       <div className="final_container">
@@ -33,7 +42,7 @@ function FinalScore() {
       <br />
       <button onClick={navigateToSaved}>See your saved Questions?</button>
       <br />
-      <button > Clear Data</button>
+      <button onClick={clearData}> Clear Data</button>
       <br />
       <button onClick={navigateToHome}>Start again</button>
 

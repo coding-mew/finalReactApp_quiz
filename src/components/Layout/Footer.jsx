@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import { GiSoundOff, GiSoundOn } from "react-icons/gi";
 import useSound from "use-sound";
 import { useGameContext } from "../../global/Context";
 import startsong from '../../assets/sounds/monk-chant-fantasy-23137.mp3'
+import radiowavesSound from '../../assets/sounds/Radio_Waves_Earth_Magnetosphere.mp3'
 
 function Footer() {
 
-  const [play, { stop }] = useSound(startsong, { volume: 0.3 });
+  // const [play, { stop }] = useSound(startsong, { volume: 0.3 });
+  const [playRadiowaves, { stopRadiowaves }] = useSound(radiowavesSound, { volume: 0.3 });
+
 
   const { isSoundOn, setIsSoundOn } = useGameContext();
 
@@ -19,6 +22,19 @@ function Footer() {
       setIsSoundOn(true);
     }
   }
+  const audioRef = useRef(null);
+const [play, { stop }] = useSound(startsong, {
+  volume: 0.3,
+  ref: audioRef
+});
+
+useEffect(() => {
+  if (audioRef.current) {
+    audioRef.current.addEventListener("ended", () => {
+      play();
+    });
+  }
+}, [audioRef, play]);
 
   return (
     <footer>

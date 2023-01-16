@@ -10,15 +10,14 @@ function ChooseQuiz() {
   // const [quizData, setQuizData] = useState([]);
   const [topic, setTopic] = useState("JavaScript");
   const [amountQuestions, setAmountQuestions] = useState(5);
-  const { gameData, setGameData, showNavbar, setShowNavbar, isSoundOn } = useGameContext();
+  const { gameData, setGameData, setShowNavbar, isSoundOn } = useGameContext();
   const navigateToQuiz = useNavigate();
 
-  const [play, { stop }] = useSound(generateQuizSound, { volume: 0.3 });
+  const [play, { stop }] = useSound(generateQuizSound, { volume: 0.1 });
 
   const fetchingData = async () => {
     await axios.get(url).then(async (res) => {
       await setGameData(res.data);
-      //  await setGameData(quizData);
     });
   };
   useEffect(() => {
@@ -30,7 +29,6 @@ function ChooseQuiz() {
     fetchingData();
     if (isSoundOn) {
       play();
-      // setIsSoundOn(false);
     }
     navigateToQuiz("/quiz");
   };

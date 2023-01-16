@@ -4,7 +4,9 @@ import useSound from "use-sound";
 import { useGameContext } from "../../global/Context";
 
 function Footer() {
-  const soundUrl = "../../src/assets/sounds/monk-chant-fantasy-23137.mp3";
+  const soundUrl = "../../assets/sounds/monk-chant-fantasy-23137.mp3";
+  const soundUrl2 = "../../assets/sounds/mixkit-sci-fi-device-pulsations-884.wav";
+
   const [play, { stop }] = useSound(soundUrl, { volume: 0.1 });
 
   const { isSoundOn, setIsSoundOn } = useGameContext();

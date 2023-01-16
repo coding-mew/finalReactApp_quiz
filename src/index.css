@@ -308,8 +308,8 @@ input[type="submit"] {
   border: none;
 } */
 @media screen and (max-width: 415px) {
-  .takeQuiz_container {
-    /* height: 100%; */}
+  /* .takeQuiz_container {
+    /* height: 100%; */} */
   .next_button,
   .save_button{
     padding: 0px;
@@ -335,7 +335,7 @@ input[type="submit"] {
 
   }
   
-}
+/* } */
 
 /* ________________HOME________________ */
 .home_container {

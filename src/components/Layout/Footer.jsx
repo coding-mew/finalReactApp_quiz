@@ -3,7 +3,7 @@ import { GiSoundOff, GiSoundOn } from "react-icons/gi";
 import useSound from "use-sound";
 import { useGameContext } from "../../global/Context";
 // import { start} from '../../assets/sounds/start'
-import startsong from './monk-chant-fantasy-23137.mp3'
+import startsong from '../../assets/sounds/monk-chant-fantasy-23137.mp3'
 
 function Footer() {
   // const soundUrl = "../../assets/sounds/monk-chant-fantasy-23137.mp3";

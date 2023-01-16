@@ -40,6 +40,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 h1 {
@@ -323,7 +324,7 @@ input[type="submit"] {
   }
   .label_quiz,
   input[type="submit"]{
-    width:20vw;
+    width:60%vw;
     display:block;
     margin-left:0;
     font-size: 1rem;

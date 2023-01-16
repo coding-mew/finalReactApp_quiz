@@ -45,7 +45,10 @@ function ChooseQuiz() {
             <option value="JavaScript">JavaScript</option>
             <option value="HTML">HTML</option>
             <option value="MySQL">MySQL</option>
-            <option value="Bash">Bash</option>
+            <option value="Linux">Linux</option>
+            <option value="PHP">PHP</option>
+            <option value="Linux">Linux</option>
+
           </select>
           <br />
           <br />

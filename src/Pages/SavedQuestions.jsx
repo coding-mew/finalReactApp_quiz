@@ -15,11 +15,8 @@ function SavedQuestions() {
     JSON.parse(localStorage.getItem("savedQuestions")) || []
   );
   const [currentSavedQuestionIndex, setcurrentSavedQuestionIndex] = useState(0);
-
   const [playClearDataSound, { stopClearDataSound }] = useSound(clearDataSound, { volume: 0.6 });
-
   const [playNextSound, { stopNextSound }] = useSound(nextSound, { volume: 0.6 });
-
   const navigate = useNavigate();
 
   const handleDelete = (index) => {
@@ -47,7 +44,7 @@ function SavedQuestions() {
 
   return (
     <div className="card">
-      {currentSavedQuestionIndex === localSavedQuestions.length - 1 ? (
+      {currentSavedQuestionIndex === localSavedQuestions.length ? (
         <div>
           <h2> There are currently no (further) questions saved</h2>
           <br />

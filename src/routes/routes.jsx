@@ -35,6 +35,11 @@ const routes = [
     element: <SavedQuestions />,
     id: 9,
   },
+  {
+    path: "/impressum",
+    element: <Impressum />,
+    id: 10,
+  },
 ];
 
 export default routes;

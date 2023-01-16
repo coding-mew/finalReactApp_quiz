@@ -1,22 +1,18 @@
-import React, {useState, createContext} from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import ChooseQuiz from "./Pages/ChooseQuiz";
-import HomePage from "./Pages/HomePage";
 import Layout from "./components/Layout/Layout";
-import Quiz from "./Pages/Quiz";
-import FinalScore from "./Pages/FinalScore";
-import NotFound from "./Pages/NotFound";
 import { GameContextProvider } from "./global/Context";
+import ChooseQuiz from "./Pages/ChooseQuiz";
+import FinalScore from "./Pages/FinalScore";
+import HomePage from "./Pages/HomePage";
+import Impressum from "./Pages/Impressum";
+import NotFound from "./Pages/NotFound";
+import Quiz from "./Pages/Quiz";
 import SavedQuestions from "./Pages/SavedQuestions";
-
-// PROVIDER - alle einzeln, wie kombinieren?
-// doppelrendern by firstload quiz
-// deploychaos
 
 
 function App() {
-
   return (
     <>
       <HashRouter>
@@ -28,6 +24,7 @@ function App() {
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/final_score" element={<FinalScore />} />
               <Route path="/saved_questions" element={<SavedQuestions/>} />
+              <Route path="/impressum" element={<Impressum/>} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </Layout>

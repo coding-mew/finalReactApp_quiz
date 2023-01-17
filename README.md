@@ -14,9 +14,11 @@ A quiz app, that covers different topics on programming
 # Some included Laguages, Technologies and Tools
 - HTML5, CSS3, JavaScript
 - React 6 
-    - (useEffect, useSound, useContext, useRef, useState, useNavigate, etc )
+    - (useEffect, useContext, useRef, useState, useNavigate, etc )
     - react router dom
     - react icons
+    - custom Hooks: useSound, useModal optional
+    - conditional Rendering of Navbar, classNames, Modals etc
 - Vite, QuizApi.io, hidden API key _env, crypto.randomUUID()
 
 

@@ -11,7 +11,7 @@ A quiz app, that covers different topics on programming
     - some animations, sound
     - etc...
    
-# Used Laguages Technologies and Tools
+# Some included Laguages, Technologies and Tools
 - HTML5, CSS3, JavaScript
 - React 6 
     - (useEffect, useSound, useContext, useRef, useState, useNavigate, etc )

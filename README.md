@@ -2,12 +2,13 @@
 A quiz app, that covers different topics on programming
 - covers:
     -user can choose:
-        > different topics (programming-related)
-        > different amounts of questions
+        - different topics (programming-related)
+        - different amounts of questions
     - fetch quiz Api
     - option to save single questions to local storage and review/delete them
     - modal that shows user if the questions have been answered correctly and what the correct answer actually would be
-    - some animations
+    - navbar/routing/navigating
+    - some animations, sound
     - etc...
    
 # Used Laguages Technologies and Tools

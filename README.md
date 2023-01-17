@@ -22,8 +22,8 @@ A quiz app, that covers different topics on programming
 
 # To Do
 - work on responsitivity for smaller screens and burger menu
-- how to make music play again when finished?
-- Why no animation in safari?
+- how to make music play again when finished? new Audio play.loop..
+- Why no animation in safari? (webkit?)
 
 
 # Further Ideas

@@ -31,4 +31,5 @@ A quiz app, that covers different topics on programming
 - User Login
 - Social Gaming/ Challenges (You have been better than x% of all people who took the test)
 - saved question that have been soved wrong automatically
+- -distinguish between better/worse results  -> diff components??
 

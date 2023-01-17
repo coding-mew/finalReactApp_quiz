@@ -14,9 +14,9 @@ A quiz app, that covers different topics on programming
    
 # Some included Laguages, Technologies and Tools
 - HTML5, CSS3, JavaScript
-- React 6 
+- React 18
     - (useEffect, useContext, useRef, useState, useNavigate, etc )
-    - react router dom
+    - react router dom (V. 6)
     - react icons
     - custom Hooks: useSound, useModal optional
     - conditional Rendering of Navbar, classNames, Modals etc
@@ -27,6 +27,7 @@ A quiz app, that covers different topics on programming
 - work on responsitivity for smaller screens and burger menu
 - loop music? new Audio play.loop..
 - Why no animation in safari? (webkit?)
+- - logic/component for multiple answers possible questions from api
 
 
 # Further Ideas

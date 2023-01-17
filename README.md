@@ -7,17 +7,17 @@ A quiz app, that covers different topics on programming
     - fetch quiz Api
     - option to save single questions to local storage and review/delete them
     - modal that shows user if the questions have been answered correctly and what the correct answer actually would be
-    - navbar/routing/navigating
+    - navbar/routing/navigating, providing
     - some animations, sound
     - etc...
    
 # Used Laguages Technologies and Tools
 - HTML5, CSS3, JavaScript
 - React 6 
-    - (useEffect, useSound, useContext/Providing, useRef, useState, useNavigate, routing, )
+    - (useEffect, useSound, useContext, useRef, useState, useNavigate, etc )
     - react router dom
     - react icons
-- Vite, QuizApi.io, hidden API key, crypto.randomUUID()
+- Vite, QuizApi.io, hidden API key _env, crypto.randomUUID()
 
 
 # To Do

@@ -19,10 +19,6 @@ function Footer() {
       setIsSoundOn(false);
     } else {
       play();
-      play();
-      play();
-      play();
-      play();
       setIsSoundOn(true);
     }
   }

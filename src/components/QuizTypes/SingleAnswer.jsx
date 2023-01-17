@@ -4,6 +4,8 @@ import useSound from "use-sound";
 import closeModalSound from "../../assets/sounds/closeModal.wav";
 import nextQuestionSound from "../../assets/sounds/nextQuestion.wav";
 import saveQuestionSound from "../../assets/sounds/saveQuestion.wav";
+import labelClickSound from "../../assets/sounds/labelClick.wav";
+
 
 import { useGameContext } from "../../global/Context";
 
@@ -68,6 +70,8 @@ function SingleAnswer() {
     currentQuestion.answers[correctAnswerKey.replace("_correct", "")];
   const [playSave, { stopSave }] = useSound(saveQuestionSound, { volume: 0.4 });
   const [playNext, { stopNext }] = useSound(nextQuestionSound, { volume: 0.4 });
+  const [labelClick, { stopLabelClick }] = useSound(labelClickSound, { volume: 0.4 });
+
   const [playCloseModalSound, { stopCloseModalSound }] = useSound(
     closeModalSound,
     { volume: 0.8 }
@@ -128,6 +132,7 @@ function SingleAnswer() {
   };
 
   const handleSelectChange = (answer) => {
+    labelClick()
     setSelectedAnswer(answer);
   };
   const handleModalButton = () => {

@@ -14,7 +14,7 @@ function HomePage() {
 
   useEffect(() => {
     setShowNavbar(false);
-  });
+  },[]);
 
   const handleEnterClick = () => {
     if (isSoundOn) {

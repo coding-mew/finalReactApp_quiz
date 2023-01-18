@@ -1,3 +1,3 @@
-# work on responsive design on smaler screens
+# work on responsive design on smaller screens
 
 # burger menu for small screens 

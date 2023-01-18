@@ -132,7 +132,9 @@ function SingleAnswer() {
   };
 
   const handleSelectChange = (answer) => {
-    labelClick()
+    if (isSoundOn) {
+      labelClick()
+    }
     setSelectedAnswer(answer);
   };
   const handleModalButton = () => {

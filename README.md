@@ -24,6 +24,7 @@ A quiz app, that covers different topics on programming
 
 
 # To Do
+- repair overflow! for mobile
 - work on responsitivity for smaller screens and burger menu
 - loop music? new Audio play.loop..
 - Why no animation in safari? (webkit?)

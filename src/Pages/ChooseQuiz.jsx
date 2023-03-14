@@ -41,10 +41,10 @@ function ChooseQuiz() {
           <select id="topic" onChange={(e) => setTopic(e.target.value)}>
             <option value="JavaScript">JavaScript</option>
             <option value="HTML">HTML</option>
-            <option value="MySQL">MySQL</option>
+            {/* <option value="MySQL">MySQL</option>
             <option value="Linux">Linux</option>
             <option value="PHP">PHP</option>
-            <option value="Linux">Linux</option>
+            <option value="Linux">Linux</option> */}
 
           </select>
           <br />
@@ -56,8 +56,8 @@ function ChooseQuiz() {
           >
             <option value="5">5</option>
             <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
+            {/* <option value="15">15</option>
+            <option value="20">20</option> */}
           </select>
           <br />
           <button className="generateQuiz" type="submit">

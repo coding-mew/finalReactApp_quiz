@@ -22,7 +22,7 @@ function Navigation() {
       id: 2,
     },
     {
-      name: "Final",
+      name: "Score",
       to: "/final_score",
       id: 3,
     },
@@ -31,11 +31,11 @@ function Navigation() {
       to: "/saved_questions",
       id: 4,
     },
-    {
-      name: "Not Found",
-      to: "*",
-      id: 5,
-    },
+    // {
+    //   name: "Not Found",
+    //   to: "*",
+    //   id: 5,
+    // },
   ];
   return showNavbar ? (
     <header>
